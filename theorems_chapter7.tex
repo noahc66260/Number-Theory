@@ -1,0 +1,254 @@
+\documentclass{amsart}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{fullpage}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{note*}{Note}
+\begin{document}
+
+\section*{Chapter 7}
+
+\begin{theorem}[7.1]
+  If
+  $\langle a_0, a_1, \cdots, a_j \rangle 
+  = \langle b_0, b_1, \cdots, b_j \rangle$
+  where these finite continued fractions are simple,
+  and if $a_j > 1$ and $b_n > 1$, then $j = n$ and
+  $a_i = b_i$ for $i = 0, 1, \cdots, n$.
+\end{theorem}
+
+\begin{theorem}[7.2]
+  Any finite simple continued fraction represents a rational 
+  number. 
+  Conversely, any rational number can be expressed as a finite
+  simple continued fraction, and in exactly two ways. 
+\end{theorem}
+
+\begin{note*}
+  Suppose $u_0 / u_1 \in \mathbb{Q}$.
+  Then
+  $\frac{u_0}{u_1} 
+  = \langle a_0, a_1, \cdots a_j \rangle
+  = \langle a_0, a_1, \cdots a_j - 1, 1 \rangle$.
+  Those are its two sole representations.
+\end{note*}
+
+\begin{definition*}
+  Let $a_0, a_1, a_2, \ldots$ be an infinite sequence
+  of integers, all positive except perhaps $a_0$.
+  We define two sequences of integers
+  $\{ h_n \}$ and $\{ k_n \}$ inductively as follows:
+  \begin{align*}
+    h_{-2} = 0, h_{-1} = 1, h_i &= a_i h_{i-1} + h_{i-2}, 
+      \quad \text{for $i \geq 0$} \\
+      k_{-2} = 1, k_{-1} = 0, k_i &= a_i k_{i-1} + k_{i-2}, 
+      \quad \text{for $i \geq 0$}
+  \end{align*}
+  We note that $1 = k_0 < k_1 < k_2 < k_3 < \cdots < k_n < \cdots$.
+\end{definition*}
+
+\begin{theorem}
+  For any positive real number $x$,
+  \[
+    \langle a_0, a_1, \cdots, a_{n-1}, x \rangle
+    = \frac{x h_{n-1} + h_{n-2}}{x k_{n-1} + k_{n-2}}.
+ \]
+\end{theorem}
+
+\begin{theorem}
+  If we define $r_n = \langle a_0, a_1, \cdots, a_n \rangle$
+  for all integers $n \geq 0$, then 
+  $r_n = \frac{h_n}{k_n}$.
+\end{theorem}
+
+\begin{theorem}
+  The equations
+  \[
+    h_i k_{i-1} - h_{i-1} k_i = (-1)^{i-1}
+    \quad
+    \text{and}
+    \quad
+    r_i - r_{i-1} = \frac{(-1)^{i-1}}{k_i k_{i-1}}
+  \]
+  hold for $i \geq 1$.
+  The identities 
+  \[
+    h_i k_{i-2} - h_{i-2} k_i = (-1)^{i} a_i
+    \quad
+    \text{and}
+    \quad
+    r_i - r_{i-2} = \frac{(-1)^{i-1}}{k_i k_{i-2}}
+  \]
+  hold for $i \geq 1$.
+  The fraction $h_i / k_i$ is reduced, that is
+  $(h_i, k_i) = 1$.
+\end{theorem}
+
+\begin{theorem}
+  The values $r_n$ defined in Theorem 7.4 satisfy
+  the infinite chan of inequalities
+  $r_0 < r_2 < r_4 < r_6 < \cdots < r_7 < r_5 < r_3 < r_1$.
+  Stated in words, the $r_n$ with even subscripts form an 
+  increasing sequence, those with odd subscripts form a decreasing
+  sequence, and every $r_{2n}$ is less than every
+  $r_{2j-1}$.
+  Furthermore, $\lim_{n \to \infty} r_n$ exists, and
+  for every $j \geq 0$, $r_{2j} < \lim_{n \to \infty} r_n < r_{2j+1}$.
+\end{theorem}
+
+\begin{definition*}
+  An infinite sequence 
+  $a_0, a_1, a_2, \cdots$
+  of integers, all positive except perhaps for $a_0$, determines
+  an infinite simple continued fraction 
+  $\langle a_0, a_1, a_2, \cdots \rangle$.
+  The value of 
+  $\langle a_0, a_1, a_2, \cdots \rangle$
+  is defined to be 
+  $\lim_{n \to \infty} \langle a_0, a_1, a_2, \cdots, a_n \rangle$.
+\end{definition*}
+
+\begin{theorem}
+  The value of any infinite simple continued fraction
+  $\langle a_0, a_1, a_2, \cdots \rangle$ is irrational.
+\end{theorem}
+
+\begin{theorem}
+  Two distinct infinite simple continued fractions converge to different
+  values.
+\end{theorem}
+
+\begin{lemma}
+  Let $\theta = \langle a_0, a_1, a_2, \cdots \rangle$
+  be a simple continued fraction.
+  Then $a_0 = [\theta]$.
+  Furthermore, if $\theta_1$ denotes
+  $\langle a_1, a_2, a_3, \cdots \rangle$, then
+  $\theta = a_0 + 1 / \theta_1$.
+\end{lemma}
+
+\begin{note*}
+  To construct the continued fraction of an irrational number:
+  \begin{align*}
+    \xi_0 &= \xi \\
+    a_i &= [\xi_i] \\
+    \xi_{i+1} &= \frac{1}{\xi_i - a_i}.
+  \end{align*}
+  Note that this implies $\xi_i = a_i + \frac{1}{\xi_{i+1}}$.
+  Now we get
+  \begin{align*}
+    \xi &= \xi_0 = a_0 + \frac{1}{\xi_1} = \langle a_0, \xi_1 \rangle \\
+        &= \left \langle a_0, a_1 + \frac{1}{\xi_2} \right \rangle
+           = \langle a_0, a_1, \xi_2 \rangle \\
+        &= \qquad \vdots \\
+        &= \left \langle 
+    a_0, a_1, a_2, \cdots, a_{m-2}, a_{m-1} + \frac{1}{\xi_m} 
+           \right \rangle 
+           = \langle a_0, a_1, \cdots, a_{m-1}, \xi_m \rangle,
+  \end{align*}
+  so 
+  \begin{align*}
+    \xi = \langle a_0, a_1, \cdots, a_{n-1}, \xi_n \rangle
+    &= \frac{\xi_n h_{n-1} + h_{n-2}}{\xi_n k_{n-1} + k_{n-2}}.
+  \end{align*}
+\end{note*}
+
+\begin{theorem}
+  Any irrational number $\xi$ is uniquely expressible, 
+  by the procedure gave in the previous note, as an infinite
+  simple continued fraction
+  $\langle a_0, a_1, a_2, \cdots \rangle$.
+  Conversely, any such continued fraction determined by integers
+  $a_i$ that are positive for all $i > 0$ represents an 
+  irrational number, $\xi$.
+  The finite simple continued fraction 
+  $\langle a_0, a_1, \cdots, a_n \rangle$ has the rational value
+  $\frac{h_n}{k_n} = r_n$, and is called the nth convergent to 
+  $\xi$.
+  Even convergents form a monotonically increasing sequence with
+  $\xi$ as the limit.
+  Similarly, odd convergents form a monotonically decreasing sequence
+  tending to $\xi$.
+  The denominators $k_n$ of the convergents are an increasing
+  sequence of positive integers for $n > 0$.
+  Finally, with $\xi_i$ defined as in our previous note,
+  we have 
+  $\langle a_0, a_1, \cdots \rangle 
+  = \langle a_0, a_1, \cdots, a_{n-1}, \xi_n \rangle$
+  and 
+  $\xi_n = \langle a_n, a_{n+1}, a_{n+2}, \cdots \rangle$.
+\end{theorem}
+
+\begin{theorem}
+  We have for any $n \geq 0$,
+  \begin{align*}
+    \left| \xi - \frac{h_n}{k_n} \right|
+    < 
+    \frac{1}{k_n k_{n+1}}
+    \quad
+    \text{and}
+    \quad
+    | \xi k_n - h_n | < \frac{1}{k_{n+1}}
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}
+  The convergents $h_n / k_n$ are successively closer to $\xi$, that is
+  \begin{align*}
+    \left| \xi - \frac{h_n}{k_n} \right|
+    < 
+    \left| \xi - \frac{h_{n-1}}{k_{n-1}} \right|,
+  \end{align*}
+  in fact the stronger inequality
+  \begin{align*}
+    \left| \xi k_{n} - h_{n} \right|
+    < 
+    \left| \xi k_{n-1} - h_{n-1} \right|
+  \end{align*}
+  holds.
+\end{theorem}
+
+\begin{theorem}
+  If $a/b$ is a rational number with positive denominator such that 
+  $|\xi - a/b | < |\xi - h_n/k_n|$ for some $n \geq 1$, then
+  $b > k_n$.
+  In fact if $|\xi b - a| < |\xi k_n - h_n|$ for some
+  $n \geq 0$, then $b \geq k_{n+1}$.
+\end{theorem}
+
+\begin{theorem}
+  Let $\xi$ denote any irrational number.
+  If there is a rational number $a/b$ with $b \geq 1$ such that
+  \[
+    \left| \xi - \frac{a}{b} \right| < \frac{1}{2b^2},
+  \]
+  then $a/b$ equals one of the convergents of the simple continued fraction 
+  expansion of $\xi$.
+\end{theorem}
+
+\begin{theorem}
+  The nth convergent of $1/x$ is the reciprocal of the 
+  $(n-1)$st convergetn of $x$ if $x$ is any real number $> 1$.
+\end{theorem}
+
+\begin{theorem}
+  Hurwitz. Given any irrational number $\xi$, there exist
+  infinitely many rational numbers $h/k$ such that
+  \begin{align*}
+    \left| \xi - \frac{h}{k} \right| < \frac{1}{\sqrt{5}k^2}.
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}
+  The constant $\sqrt{5}$ in the preceding theorem is the best
+  possible.
+  In other words, the theorem does not hold if $\sqrt{5}$ is
+  replaced by a larger number.
+\end{theorem}
+
+\end{document}

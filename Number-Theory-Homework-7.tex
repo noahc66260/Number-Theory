@@ -1,0 +1,1285 @@
+\documentclass[12 pt]{amsart}
+
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{rotating}
+\usepackage{anyfontsize}
+
+\begin{document}
+
+\allowdisplaybreaks
+\title
+[Problem Set 7]
+{Problem Set 7 \\
+MATH 115 \\
+Number Theory \\
+Professor Paul Vojta}
+
+\author{Noah Ruderman}
+
+\date{ August 11, 2014}
+
+\maketitle
+\begin{center}
+	Problems 7.1.1, 7.1.4, 7.1.5, 7.3.3abd, 7.3.5, 7.4.1, 7.4.3, 7.4.4, 7.4.7, 7.5.1, 7.5.3, 7.5.4, 7.6.4, and 7.6.5 
+	from \emph{An Introduction to The Theory of Numbers}, 
+	$5^{\text{th}}$ edition,
+	by Ivan Niven, Herbert S. Zuckerman, and Hugh L. Montgomery 
+\end{center}
+
+%\vfill
+%\begin{center}
+%  \begin{turn}{30}
+%  \fontsize{2.5cm}{2cm}\selectfont
+%    \textbf{DRAFT}
+%  \end{turn}
+%\end{center}
+%\vfill
+
+% PROBLEM 1
+\newpage
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.1.1) \\[4ex]
+  Expand the rational fractions
+  $17/3$,
+  $3/17$,
+  and
+  $8/1$
+  into finite simple continued fractions.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  \indent
+  \textbf{We start with $\frac{17}{3}$.}
+  Using the Euclidean algorithm, we see that 
+  \begin{align*}
+    17 &= 5 \cdot 3 + 2 \\
+    3 &= 1 \cdot 2 + 1 \\
+    2 &= 2 \cdot 1 + 0
+  \end{align*}
+  So we see that $a_0 = 5$, $a_1 = 1$ and $a_2 = 2$.
+  Thus, we get
+  \begin{align*}
+    \frac{17}{3} 
+    &= 
+     \langle 5, 1, 2 \rangle \\
+    &=
+     5 + \frac{1}{1 + \frac{1}{2}}.
+  \end{align*}
+
+  \textbf{Next we have $\frac{3}{17}$.}
+  Using the Euclidean algorithm, we see that 
+  \begin{align*}
+    3 &= 0 \cdot 17 + 3 \\
+    17 &= 5 \cdot 3 + 2 \\
+    3 &= 1 \cdot 2 + 1 \\
+    2 &= 2 \cdot 1 + 0
+  \end{align*}
+  So we see that $a_0 = 0$, $a_1 = 5$, $a_2 = 1$ and $a_3 = 2$.
+  Thus, we get
+  \begin{align*}
+    \frac{3}{17} 
+    &=
+     \langle 0, 5, 1, 2 \rangle \\
+    &= 
+     \frac{1}{5 + \frac{1}{1 + \frac{1}{2}}}.
+  \end{align*}
+
+  \textbf{Finally we have $\frac{8}{1}$.}
+  Using the Euclidean algorithm, we see that 
+  \begin{align*}
+    8 
+    &=
+      \langle 8 \rangle \\
+    &=
+      8 \cdot 1 + 0.
+  \end{align*}
+  We see that $a_0 = 8$.
+  Thus, we get
+  \begin{align*}
+    8 &= 8
+  \end{align*}
+  \qed 
+\vfill
+\newpage
+
+
+
+% PROBLEM 2
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.1.4) \\[4ex]
+  Given positive integers $b$, $c$, $d$ with 
+  $c > d$, prove that 
+  $\langle a,c \rangle < \langle a, d \rangle$ but
+  $\langle a,b,c \rangle > \langle a,b, d \rangle$
+  for any integer $a$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  We see that 
+  \begin{align*}
+    c &> d \\
+    \frac{1}{d} &> \frac{1}{c} & d,c \in \mathbb{Z}^+\\
+    a + \frac{1}{d} &> a + \frac{1}{c} \\
+    \langle a,d \rangle &> \langle a, c \rangle,
+  \end{align*}
+  proving the first part.
+
+  Next we see that 
+  \begin{align*}
+    c &> d \\
+    \frac{1}{d} &> \frac{1}{c} & d,c \in \mathbb{Z}^+ \\
+    b + \frac{1}{d} &> b + \frac{1}{c} \\
+    \langle b,d \rangle &> \langle b, c \rangle \\
+    \frac{1}{\langle b,c \rangle} &> \frac{1}{\langle b, d \rangle} \\
+    a + \frac{1}{\langle b,c \rangle} &> a + \frac{1}{\langle b, d \rangle} \\
+    \langle a,b,c \rangle &> \langle a,b, d \rangle,
+  \end{align*}
+  proving the second part.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 3
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.1.5) \\[4ex]
+  Let $a_1$, $a_2$, $\cdots$, $a_n$ and $c$
+  be positive real numbers.
+  Prove that 
+  \[
+    \langle a_0, a_1, \cdots, a_n \rangle 
+    > 
+    \langle a_0, a_1, \cdots, a_n + c \rangle 
+  \]
+  holds if $n$ is odd, but is false if $n$ is even.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Let $m \in \mathbb{Z}^+$ and suppose
+  $2 \leq m \leq n$.
+  We use induction to show that if
+  \[
+    \langle a_m, a_{m+1} \cdots, a_n \rangle 
+    > 
+    \langle a_m, a_{m+1} \cdots, a_n + c\rangle 
+  \]
+  then
+  \[
+    \langle a_{m-2}, a_{m-1}, \cdots, a_n \rangle 
+    > 
+    \langle a_{m-2}, a_{m-1}, \cdots, a_n + c\rangle.
+  \]
+  Suppose 
+  \[
+    \langle a_m, a_{m+1} \cdots, a_n \rangle 
+    > 
+    \langle a_m, a_{m+1} \cdots, a_n + c\rangle 
+  \]
+  We see that 
+  \begin{align}
+    \notag
+    \langle a_m, a_{m+1} \cdots, a_n \rangle 
+    &> 
+      \langle a_m, a_{m+1} \cdots, a_n + c\rangle  \\
+    \notag
+    \frac{1}{\langle a_m, a_{m+1} \cdots, a_n + c\rangle}
+    &> 
+      \frac{1}{\langle a_m, a_{m+1} \cdots, a_n\rangle}  \\
+    \notag
+    a_{m-1} + \frac{1}{\langle a_m, a_{m+1} \cdots, a_n + c\rangle}
+    &> 
+      a_{m-1} + \frac{1}{\langle a_m, a_{m+1} \cdots, a_n\rangle}  \\
+    \label{eq:7.1.5.1}
+    \langle a_{m-1}, a_{m} \cdots, a_n + c\rangle 
+    &> 
+      \langle a_{m-1}, a_{m} \cdots, a_n \rangle  \\
+    \notag
+    \frac{1}{\langle a_{m-1}, a_{m} \cdots, a_n\rangle} 
+    &> 
+      \frac{1}{\langle a_{m-1}, a_{m} \cdots, a_n + c\rangle}  \\
+    \notag
+    a_{m-2} + \frac{1}{\langle a_{m-1}, a_{m} \cdots, a_n\rangle} 
+    &> 
+      a_{m-2} + \frac{1}{\langle a_{m-1}, a_{m} \cdots, a_n + c\rangle}  \\
+    \label{eq:7.1.5.2}
+    \langle a_{m-2}, a_{m-1}, \cdots, a_n \rangle 
+    &> 
+      \langle a_{m-2}, a_{m-1}, \cdots, a_n + c\rangle,
+  \end{align}
+  completing the induction step.
+  It should be clear that this induction step also holds if 
+  we replace the $>$ sign with $<$.
+
+  We see that 
+  $\langle a_n \rangle = a_n < a_n + c = \langle a_n + c \rangle$.
+  We have two cases
+  \begin{enumerate}
+  \item $n$ is even. \\
+    If $n = 0$, then 
+    $\langle a_0 \rangle = a_0 < a_0 + c = \langle a_0 + c \rangle$,
+    and we are done.
+    If $n > 0$, then we can use the above result to get
+    $\langle a_{n-2}, a_{n-1}, a_n \rangle 
+    < \langle a_{n-2}, a_{n-1}, a_n + c \rangle$.
+    Clearly, $n - 2$ and $n$ have the same parity.
+    We can repeat this induction step until it terminates
+    where we get
+    \[
+      \langle a_0, a_1, \cdots, a_n \rangle 
+      < 
+      \langle a_0, a_1, \cdots, a_n + c \rangle 
+    \]
+  \item $n$ is odd. \\
+    If $n = 1$, then we use 
+    $\langle a_1 \rangle = a_1 < a_1 + c = \langle a_1 + c \rangle$
+    and equation \ref{eq:7.1.5.1} with $m = n = 1$ to get
+    $\langle a_0, a_1 + c \rangle < \langle a_0, a_1 \rangle$ and 
+    we are done.
+    If $n > 1$, then using equation \ref{eq:7.1.5.1} with 
+    $m = n$ and $\langle a_n \rangle < \langle a_n + c \rangle$
+    to get
+    $\langle a_{n-1}, a_n + c\rangle < \langle a_{n-1}, a_n \rangle$.
+    Now we can use the induction step to get
+    $\langle a_{n-3}, \ldots, a_n + c\rangle 
+    < \langle a_{n-1}, \ldots, a_n \rangle$,
+    and so on until it terminates. 
+    Clearly, $n-1$ and $n-3$ have the same parity.
+    When the induction terminates, we get
+    \[
+      \langle a_0, a_1, \cdots, a_n + c \rangle 
+      < 
+      \langle a_0, a_1, \cdots, a_n \rangle 
+    \]
+  \end{enumerate}
+  Thus,
+  \[
+    \langle a_0, a_1, \cdots, a_n \rangle 
+    > 
+    \langle a_0, a_1, \cdots, a_n + c \rangle 
+  \]
+  is true if $n$ is odd, but false if $n$ is even.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 4
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.3.3) \\[4ex]
+  Evalue the infinite continued fractions:
+	\begin{enumerate}
+    \item[a.] 
+       $\langle 2,2,2,2, \cdots \rangle$
+    \item[b.] 
+       $\langle 1,2,1,2,1,2 \cdots \rangle$
+    \item[d.] 
+       $\langle 1,3,1,2,1,2,1,2 \cdots \rangle$
+	\end{enumerate}
+\emph{Solution.} \\[2ex]
+	\begin{enumerate}
+		\item[a.]
+      Let $x = \langle 2,2,2,2, \cdots \rangle$.
+      We see that
+      \begin{align*}
+        x &= 2 + \frac{1}{x} \\
+        x^2 &= 2x + 1 \\
+        x^2 - 2x - 1 &= 0.
+      \end{align*}
+      From here we can use the general solution to 
+      quadratic equations to get
+      \begin{align*}
+        x &= \frac{2 \pm \sqrt{4 + 4}}{2} \\
+          &= 1 \pm \frac{\sqrt{8}}{2} \\
+          &= 1 \pm \sqrt{2}
+      \end{align*}
+      But $x > 0$, so the only valid solution is 
+      $x = 1 + \sqrt{2}$.
+		\item[b.]
+      Let $x = \langle 1,2,1,2, \cdots \rangle$.
+      We see that
+      \begin{align*}
+        x &= 1 + \frac{1}{2 + \frac{1}{x}} \\
+        x &= 1 + \frac{x}{2x + 1} \\
+        (2x + 1)x &= (2x + 1) + x  \\
+        2x^2 + x &= 2x + 1 + x \\
+        2x^2 - 2x - 1 &= 0.
+      \end{align*}
+      From here we can use the general solution to 
+      quadratic equations to get
+      \begin{align*}
+        x &= \frac{2 \pm \sqrt{4 + 8}}{4}\\
+          &= \frac{1}{2} \pm \frac{\sqrt{12}}{4} \\
+          &= \frac{1 \pm \sqrt{3}}{2}
+      \end{align*}
+      But $x > 0$, so the only valid solution is 
+      $x = \frac{1 + \sqrt{3}}{2}$.
+		\item[d.]
+      Let $x = \langle 1,3,1,2,1,2, \cdots \rangle$.
+      Let $y = \langle 1,2,1,2, \cdots \rangle$.
+      From our results in part b, we see that 
+      $y = \frac{1 + \sqrt{3}}{2}$.
+      We have
+      \begin{align*}
+        x &= 1 + \frac{1}{3 + \frac{1}{y}} \\
+        x &= 1 
+             + \frac
+                {1}
+                {3 + \frac
+                        {1}
+                        {\frac
+                           {1}
+                           {2}
+                         + \frac
+                             {\sqrt{3}}
+                             {2}
+                        }
+                } \\
+        x &= 1 
+             + \frac
+                {1}
+                {3 + \frac
+                        {2}
+                        {1 + \sqrt{3}}
+                } \\
+        x &= 1 
+             + \frac
+                {1 + \sqrt{3}}
+                {3(1 + \sqrt{3}) + 2} \\
+        x &= 1 
+             + \frac
+                {1 + \sqrt{3}}
+                {5 + 3 \sqrt{3}} \\
+        x &= 1 
+             + \frac
+             {(1 + \sqrt{3})(5 - 3 \sqrt{3})}
+                {25 - 27} \\
+        x &= 1 
+             + \frac
+             {(1 + \sqrt{3})(5 - 3 \sqrt{3})}{-2} \\
+        x &= 1 + \frac{5 - 3 \sqrt{3} + 5 \sqrt{3} - 9}{-2}  \\
+        x &= 1 + \frac{-4 + 2 \sqrt{3}}{-2}  \\
+        x &= 1 + 2 - \sqrt{3}  \\
+        x &= 3 - \sqrt{3}.
+      \end{align*}
+	\end{enumerate}
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 5
+%\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.3.5) \\[4ex]
+  Let $u_0/u_1$ be a rational number in lowest terms, and write
+  $u_0 / u_1 = \langle a_0, a_1, \cdots, a_n \rangle$.
+  Show that if $0 \leq i < n$, then 
+  $|r_i - u_0 / u_1| \leq 1 / (k_i k_{i+1})$,
+  with equality if and and only if $i = n - 1$.
+\\[2ex]
+\emph{Solution.} \\[2ex]
+  First we note that 
+  \begin{align*}
+    \left| r_i - \frac{u_0}{u_1} \right|
+    &= 
+    \left| r_i - r_n \right|
+  \end{align*}
+  Suppose $n = i + 1$.
+  By theorem 7.5, we have
+  \begin{align*}
+    \left| r_i - r_n \right|
+    &=
+      \left| r_i - r_{i+1} \right| \\
+    &=
+      \left| r_{i+1} - r_{i} \right| \\
+    &=
+      \left| \frac{(-1)^i}{k_i k_{i+1}} \right| \\
+    &=
+      \frac{1}{k_i k_{i+1}},
+  \end{align*}
+  because $k_i \in \mathbb{Z}^+$ for all $i \in \mathbb{N}$.
+  Now suppose $n - 1 > i$.
+  We have four cases
+  \begin{enumerate}[(1)]
+    \item $n$ is odd and $i$ is even: \\
+      We see that 
+      \begin{align*}
+        0 < r_n - r_i &< r_{n-2} - r_i \\
+                      &< r_{n-4} - r_i \\
+                      &\phantom{<\qquad}\vdots \\
+                      &< r_{i+1} - r_i \\
+                      &= \frac{1}{k_i k_{i+1}}.
+      \end{align*}
+      From this we can deduce that
+      \[
+        \frac{1}{k_i k_{i+1}} < 0 < r_n - r_i < \frac{1}{k_i k_{i+1}},
+      \]
+      so 
+      \[
+        | r_n - r_i | < \frac{1}{k_i k_{i+1}}.
+      \]
+    \item $n$ is even and $i$ is odd: \\
+      We see that
+      \begin{align*}
+        0 < r_i - r_n &< r_i - r_{n-2} \\
+                      &< r_i - r_{n-4} \\
+                      &\phantom{<\qquad}\vdots \\
+                      &< r_i - r_{i+1} \\
+                      &= -(r_{i+1} - r_i) \\
+                      &= - \frac{(-1)^i}{k_{i+1}k_i} \\
+                      &= \frac{1}{k_i k_{i+1}}.
+      \end{align*}
+      From this we can deduce that
+      \[
+        \frac{1}{k_i k_{i+1}} < 0 < r_i - r_n < \frac{1}{k_i k_{i+1}},
+      \]
+      so 
+      \[
+        | r_n - r_i | < \frac{1}{k_i k_{i+1}}.
+      \]
+    \item $n$ is odd and $i$ is odd: \\
+      We see that 
+      \begin{align*}
+        0 < r_i - r_n &< r_i - r_{n-1}.
+      \end{align*}
+      Call $n - 1 = n'$.
+      If $n' - 1 = i$, then
+      \begin{align*}
+        r_i - r_{n-1} &= r_i - r_{n'} \\
+                      &= r_i - r_{i+1} \\
+                      &= \frac{1}{k_i k_{i+1}},
+      \end{align*}
+      in which case we see that 
+      \[
+        \frac{1}{k_i k_{i+1}} < 0 < r_i - r_n < \frac{1}{k_i k_{i+1}},
+      \]
+      so 
+      \[
+        | r_n - r_i | < \frac{1}{k_i k_{i+1}}.
+      \]
+      If $n' - 1 > i$, then we can appeal to case 2 to
+      see that $r_i - r_{n'} < \frac{1}{k_i k_{i+1}}$ 
+      so again we have
+      \[
+        \frac{1}{k_i k_{i+1}} < 0 < r_i - r_n < \frac{1}{k_i k_{i+1}},
+      \]
+      and thus
+      \[
+        | r_n - r_i | < \frac{1}{k_i k_{i+1}}.
+      \]
+    \item $n$ is even and $i$ is even: \\
+      We see that 
+      \begin{align*}
+        0 < r_n - r_i &< r_{n-1} - r_{i}.
+      \end{align*}
+      Call $n - 1 = n'$.
+      If $n' - 1 = i$, then
+      \begin{align*}
+        r_{n-1} - r_{i} &= r_{n'} - r_{i} \\
+                        &= r_{i+1} - r_{i} \\
+                        &< \frac{1}{k_i k_{i+1}},
+      \end{align*}
+      in which case we see that 
+      \[
+        \frac{1}{k_i k_{i+1}} < 0 < r_n - r_i < \frac{1}{k_i k_{i+1}},
+      \]
+      so 
+      \[
+        | r_n - r_i | < \frac{1}{k_i k_{i+1}}.
+      \]
+      If $n' - 1 > i$, then we can appeal to case 1 to
+      see that $r_{n'} - r_{i} < \frac{1}{k_i k_{i+1}}$ 
+      so again we have
+      \[
+        \frac{1}{k_i k_{i+1}} < 0 < r_n - r_i < \frac{1}{k_i k_{i+1}},
+      \]
+      and thus
+      \[
+        | r_n - r_i | < \frac{1}{k_i k_{i+1}}.
+      \]
+  \end{enumerate}
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 6
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.4.1) \\[4ex]
+  Expand each of the following as infinite simple continued fractions:
+  $\sqrt{2}, \sqrt{2} - 1, \sqrt{2}/2, \sqrt{3}, 1/\sqrt{3}$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  \indent
+  \textbf{We start with $\sqrt{2}$.}
+  We see that
+  \[
+    \xi_0 = \sqrt{2}.
+  \]
+  We see that $1 < \sqrt{2} < 2$ so $a_0 = 1$.
+  Next we have
+  \begin{align*}
+    \xi_1 &= \frac{1}{\xi_0 - a_0} \\
+          &= \frac{1}{\sqrt{2} - 1} \\
+          &= \sqrt{2} + 1,
+  \end{align*}
+  so $a_1 = 2$.
+  Next we have
+  \begin{align*}
+    \xi_2 &= \frac{1}{\xi_1 - a_1} \\
+          &= \frac{1}{\sqrt{2} + 1 - 2} \\
+          &= \frac{1}{\sqrt{2} - 1} \\
+          &= \sqrt{2} + 1,
+  \end{align*}
+  so $a_2 = 2$.
+  Let $\i \in \mathbb{N}$.
+  Evidently $\xi_i = \sqrt{2} + 1$ implies
+  $\xi_{i+1} = \xi_i$. 
+  $\xi_1 = \sqrt{2} + 1$ so $\xi_i = \xi_1$ for $i \geq 1$.
+  It should be clear that if $a_i = a_1$ for all $i \geq 1$.
+  From this we get
+  \begin{align*}
+    \sqrt{2}
+    &=
+    \langle 1, a_1, a_1, a_1, \ldots \rangle \\
+    &=
+    \langle 1, 2, 2, 2, \ldots \rangle.
+  \end{align*}
+
+  \textbf{Now we continue with $\sqrt{2} - 1$.}
+  We see that
+  \begin{align*}
+    \sqrt{2} - 1 
+    &= 
+      \langle 1, 2, 2, 2, \ldots \rangle - 1\\
+    &= 
+      \left(
+        1 + \frac{1}{\langle 2, 2, 2, \ldots \rangle}
+      \right) - 1 \\
+    &= 
+      0 + \frac{1}{\langle 2, 2, 2, \ldots \rangle} \\
+    &= 
+      \langle 0, 2, 2, 2, \ldots \rangle \\
+  \end{align*}
+
+  \textbf{Next we have $\frac{\sqrt{2}}{2}$.}
+  We see that $\frac{\sqrt{2}}{2} = \frac{1}{\sqrt{2}}$ and
+  \begin{align*}
+    \frac{1}{\sqrt{2}} 
+    &=
+      0 + \frac{1}{\sqrt{2}}  \\
+    &=  
+      0 + \frac{1}{\langle 1, 2, 2, 2, \cdots \rangle} \\
+    &=  
+      \langle 0, 1, 2, 2, 2, \cdots \rangle
+  \end{align*}
+
+  \textbf{We continue with $\sqrt{3}$.}
+  We start with 
+  \[
+    \xi_0 = \sqrt{3}.
+  \]
+  We see that $1 < \sqrt{3} < 2$ so $a_0 = 1$.
+  Next we have
+  \begin{align*}
+    \xi_1 &= \frac{1}{\xi_0 - a_0} \\
+          &= \frac{1}{\sqrt{3} - 1} \\
+          &= \frac{\sqrt{3} + 1}{2},
+  \end{align*}
+  so $a_1 = 1$.
+  Next we have
+  \begin{align*}
+    \xi_2 &= \frac{1}{\xi_1 - a_1} \\
+          &= \frac{1}{\frac{\sqrt{3} + 1}{2} - 1} \\
+          &= \frac{1}{\frac{\sqrt{3} - 1}{2}} \\
+          &= \frac{2}{\sqrt{3} - 1} \\
+          &= \frac{2(\sqrt{3} + 1)}{2} \\
+          &= \sqrt{3} + 1 \\
+  \end{align*}
+  so $a_2 = 2$.
+  Next we have
+  \begin{align*}
+    \xi_3 &= \frac{1}{\xi_2 - a_2} \\
+          &= \frac{1}{\sqrt{3} + 1 - 2} \\
+          &= \frac{1}{\sqrt{3} - 1} \\
+          &= \frac{\sqrt{3} + 1}{2} 
+  \end{align*}
+  Let $\i \in \mathbb{N}$.
+  Evidently $\xi_i = \frac{\sqrt{3} + 1}{2}$ implies
+  $\xi_{i+2} = \xi_i$. 
+  $\xi_1 = \frac{\sqrt{3} + 1}{2}$ so $\xi_i = \xi_1$
+  for $i \equiv 1 \mod 2$.
+  Furthermore, $\xi_i = \xi_2$ for $i \equiv 0 \mod 2$ and 
+  $i \geq 1$.
+  Thus, $a_1 = a_3 = a_5 = \cdots$ and 
+  $a_2 = a_4 = a_6 \cdots$, so we have
+  \begin{align*}
+    \sqrt{3}
+    &=
+    \langle a_0, a_1, a_2, a_1, a_2, \ldots \rangle \\
+    &=
+    \langle 1, 1, 2, 1, 2, \ldots \rangle.
+  \end{align*}
+
+  We start with 
+  \[
+    \xi_0 = \frac{1}{\sqrt{3}}.
+  \]
+
+  \textbf{We finish with $\frac{1}{\sqrt{3}}$.}
+  We see that
+  \begin{align*}
+    \frac{1}{\sqrt{3}} 
+    &= 
+      0 + \frac{1}{\sqrt{3}} \\
+    &= 
+      0 + \frac{1}{\langle 1, 1, 2, 1, 2, \ldots \rangle} \\
+    &= 
+      \langle 0, 1, 1, 2, 1, 2, \ldots \rangle \\
+  \end{align*}
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 7
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.4.3) \\[4ex]
+  Let $\alpha, \beta, \gamma$ be irrational numbers satisfying
+  $\alpha < \beta < \gamma$.
+  If $\alpha$ and $\gamma$ have identical convergents
+  $h_0/k_0, h_1/k_1, \cdots,$ up to $h_n/k_n$, prove that
+  $\beta$ also has these same convergents up to $h_n/k_n$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Let 
+  \begin{align*}
+    r_i^{\alpha} &= \langle a_0, a_1, \cdots, a_i \rangle \\
+    r_i^{\beta} &= \langle b_0, b_1, \cdots, b_i \rangle \\
+    r_i^{\gamma} &= \langle c_0, c_1, \cdots, c_i \rangle 
+  \end{align*}
+  We are given $r_i^{\alpha} = r_i^{\gamma}$ for
+  $0 \leq i \leq n$.
+  By theorem 7.1, $a_i = c_i$ for $0 \leq i \leq n$.
+  We use induction to show that 
+  $a_i = b_i = c_i$ for all $0 \leq i \leq n$.
+
+  Consider the usual algorithm for calculating the 
+  $n^{\text{th}}$ convergent to an irrational number, $\xi$.
+  For each term $x_i$ in the 
+  $\langle x_0, x_1, x_2, \cdots, x_n \rangle $, 
+  we have $x_i = \left[ \xi_i \right]$,
+  $\xi_{i+1} = \frac{1}{\xi_i - x_i}$ and 
+  $\xi_0 = \xi$.
+  Suppose 
+  $\xi^{\alpha}_i < \xi^{\beta}_i < \xi^{\gamma}_i$
+  and that $a_i = b_i = c_i$.
+  We see that 
+  \begin{align*}
+    \xi_i^{\beta} &< \xi_i^{\gamma} \\
+    \xi_i^{\beta} - b_i &< \xi_i^{\gamma} - c_i\\
+    \frac{1}{\xi_i^{\gamma} - c_i} &< \frac{1}{\xi_i^{\beta} - b_i}\\
+    \xi_{i+1}^{\gamma} &< \xi_{i+1}^{\beta}.
+  \end{align*}
+  Likewise, we see that
+  \begin{align*}
+    \xi_i^{\alpha} &< \xi_i^{\beta} \\
+    \xi_i^{\alpha} - a_i &< \xi_i^{\beta} - b_i\\
+    \frac{1}{\xi_i^{\beta} - b_i} &< \frac{1}{\xi_i^{\alpha} - a_i}\\
+    \xi_{i+1}^{\beta} &< \xi_{i+1}^{\alpha}.
+  \end{align*}
+  Thus we have 
+  \[
+    \xi_{i+1}^{\gamma} < \xi_{i+1}^{\beta} < \xi_{i+1}^{\alpha}.
+  \]
+  Furthermore, we see that 
+  \begin{align*}
+    \xi_{i+1}^{\gamma} &< \xi_{i+1}^{\beta} < \xi_{i+1}^{\alpha} \\
+    \left[ \xi_{i+1}^{\gamma} \right] 
+      &\leq \left[ \xi_{i+1}^{\beta} \right] 
+      \leq \left[ \xi_{i+1}^{\alpha} \right] \\
+    c_{i+1} &\leq b_{i+1} \leq a_{i+1}.
+  \end{align*}
+  But $a_{i+1} = c_{i+1}$ for $0 \leq i+1 \leq n$, so 
+  \[
+    a_{i+1} = b_{i+1} =  c_{i+1}.
+  \]
+
+  We  have proved 
+  $\xi^{\alpha}_i < \xi^{\beta}_i < \xi^{\gamma}_i$
+  and $a_i = b_i = c_i$ implies
+  $\xi^{\gamma}_{i+1} < \xi^{\beta}_{i+1} < \xi^{\alpha}_{i+1}$
+  and $a_{i+1} = b_{i+1} =  c_{i+1}$.
+  A similar argument shows 
+  $\xi^{\gamma}_i < \xi^{\beta}_i < \xi^{\alpha}_i$
+  and $a_i = b_i = c_i$ implies
+  $\xi^{\alpha}_{i+1} < \xi^{\beta}_{i+1} < \xi^{\gamma}_{i+1}$
+  and $a_{i+1} = b_{i+1} =  c_{i+1}$
+  for $0 \leq i < n$.
+
+  As our base case, we see that 
+  \begin{align*}
+    \alpha &< \beta < \gamma \\
+    \xi_0^{\alpha} &< \xi_0^{\beta} < \xi_0^{\gamma} \\
+    [\xi_0^{\alpha}] &\leq [\xi_0^{\beta}] \leq [\xi_0^{\gamma}] \\
+    a_0 &\leq b_0 \leq c_0.
+  \end{align*}
+  Since $a_0 = c_0$, we see that $a_0 = b_0 = c_0$.
+
+  By the induction hypothesis, we see that 
+  $a_i = b_i = c_i$ for all $0 \leq i \leq n$.
+  From this we see that
+  \[
+    \langle a_0, a_1, \cdots, a_i \rangle
+    = 
+    \langle b_0, b_1, \cdots, b_i \rangle
+    = 
+    \langle c_0, c_1, \cdots, c_i \rangle,
+  \]
+  so 
+  \[
+    r_i^{\alpha} = r_i^{\beta} = r_i^{\gamma},
+  \]
+  and the convergents are equal for $0 \leq i \leq n$.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 8
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.4.4) \\[4ex]
+  Let $\xi$ be an irrational number with continued fraction expansion
+  $\langle a_0, a_1, a_2, a_3, \cdots \rangle$.
+  Let $b_1, b_2, b_3, \cdots$ be any finite or infinite sequence
+  of positive integers. 
+  Prove that 
+  \[
+    \lim_{n \to \infty}
+    \langle a_0, a_1, a_2, \cdots, a_n,
+            b_1, b_2, b_3, \cdots \rangle
+    = \xi.
+  \]
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Let $x_n = 
+  \langle a_0, a_1, a_2, \cdots, a_n, b_1, b_2, b_3, \cdots \rangle$.
+  Let $r_n$ be the $n^{\text{th}}$ convergent %to $\xi$. 
+  of $x_n$.
+  We know that even convergents form a monotonically
+  increasing sequence whose limit is $x_n$.
+  Likewise, the odd convergents form a monotonically 
+  decreasing sequence whose limit is $x_n$.
+  Thus, if $n$ is odd, then 
+  \begin{align*}
+    r_{n-1} < x_n < r_n
+  \end{align*}
+  and if $n$ is even, then
+  \begin{align*}
+    r_{n} < x_n < r_{n-1}.
+  \end{align*}
+  But $r_n = \langle a_0, a_1, a_2, \cdots, a_n \rangle$, which
+  is also the $n^{\text{th}}$ convergent of $\xi$.
+  Thus, we see that 
+  \begin{align*}
+    \lim_{\substack{n \to \infty \\ \text{$n$ even}}}
+    r_n \leq 
+    \lim_{\substack{n \to \infty}}
+    x_n &\leq
+    \lim_{\substack{n \to \infty \\ \text{$n$ odd}}}
+    r_n \\
+    \xi \leq \lim_{n \to \infty} x_n &\leq \xi \\
+    \lim_{n \to \infty} x_n &= \xi,
+  \end{align*}
+  completing the proof.
+  \qed
+%  First we note that 
+%  \begin{align*}
+%    \langle b_1, b_2, b_3, \cdots \rangle 
+%    &=
+%      b_1 + \frac{1}{\langle b_2, b_3, b_4 \cdots \rangle } \\
+%    &> 1,
+%  \end{align*}
+%  so 
+%  \[
+%    \frac{1}{\langle b_1, b_2, b_3, \cdots \rangle} < 1.
+%  \]
+%  We see that 
+%  \begin{align*}
+%    \langle a_0, a_1, a_2, \cdots, a_n,
+%            b_1, b_2, b_3, \cdots \rangle 
+%    &=
+%            \left\langle a_0, a_1, a_2, \cdots, a_n 
+%            + \frac{1}{\langle b_1, b_2, b_3, \cdots \rangle}
+%            \right\rangle \\
+%    &<
+%            \left\langle a_0, a_1, a_2, \cdots, a_n + 1
+%            \right\rangle.
+%  \end{align*}
+%  Next we use theorem 7.3 to write the $n^{\text{th}}$ convergent
+%  \begin{align*}
+%    r_n &= \frac{(a_n + 1)h_{n-1} + h_{n-2}}{(a_n + 1)k_{n-1} + k_{n-2}} \\
+%        &< 
+%          \frac{a_n h_{n-1} + h_{n-2}}{(a_n + 1)k_{n-1} + k_{n-2}}
+%          + \frac{ h_{n-1} + h_{n-2}}{(a_n + 1)k_{n-1} + k_{n-2}}
+%  \end{align*}
+
+\vfill
+\newpage
+
+
+
+% PROBLEM 9
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.4.7) \\[4ex]
+  Prove that 
+  \[
+    k_n | k_{n-1} \xi - h_{n-1} |
+    + k_{n-1} |k_n \xi - h_n |
+    = 1.
+  \]
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Suppose the above equality is true, then
+  \begin{align*}
+    k_n | k_{n-1} \xi - h_{n-1} |+ k_{n-1} |k_n \xi - h_n | &= 1 \\
+    \left| \xi - \frac{h_{n-1}}{k_{n-1}} \right| 
+    + \left| \xi - \frac{h_{n}}{k_{n}} \right| 
+    &= 
+      \frac{1}{k_n k_{n-1}} \\
+    \left| \xi - r_{n-1} \right| 
+    + \left| \xi - r_n \right| 
+    &= 
+      \frac{1}{k_n k_{n-1}}.
+  \end{align*}
+  Thus, it is sufficient to prove that 
+  \begin{align*}
+    \left| \xi - r_{n-1} \right| 
+    + \left| \xi - r_n \right| 
+    &= 
+      \frac{1}{k_n k_{n-1}}.
+  \end{align*}
+
+  We know that odd convergents are larger than their limit
+  and that even convergents are smaller than their limit.
+  We have two cases:
+  \begin{enumerate}[(1)]
+    \item $n$ is even: \\
+      Thus, $r_n < \xi$ and $r_{n-1} > \xi$.
+      We have
+      \begin{align*}
+        \left| \xi - r_{n-1} \right| 
+        + \left| \xi - r_n \right| 
+        &=
+          -(\xi - r_{n-1}) + (\xi - r_n) \\
+        &=
+           r_{n-1} - r_n \\
+        &=
+           r_n - r_{n-1} \\
+        &=
+           - \frac{(-1)^{n-1}}{k_n k_{n-1}} 
+           & \text{by theorem 7.5}, n \geq 1 \\
+        &= 
+           \frac{(-1)^{n}}{k_n k_{n-1}} \\
+        &= 
+           \frac{1}{k_n k_{n-1}}.
+      \end{align*}
+    \item $n$ is odd: \\
+      Thus, $r_n > \xi$ and $r_{n-1} < \xi$.
+      We have
+      \begin{align*}
+        \left| \xi - r_{n-1} \right| 
+        + \left| \xi - r_n \right| 
+        &=
+          (\xi - r_{n-1}) - (\xi - r_n) \\
+        &=
+           r_n - r_{n-1} \\
+        &=
+           \frac{(-1)^{n-1}}{k_n k_{n-1}} 
+           & \text{by theorem 7.5}, n \geq 1\\
+        &= 
+           \frac{1}{k_n k_{n-1}}.
+      \end{align*}
+  \end{enumerate}
+  In each case, we have proved a necessary condition to 
+  imply the inequality. 
+
+  However, we have used theorem 7.5 which only holds for $n \geq 1$.
+  It remains to show that the equality holds for $n = 0, -1$.
+  We note that $h_{-2} = k_{-1} = 0$ and $h_{-1} = k_{-2} = k_0 = 1$.
+  Suppose $n = 0$. 
+  Then we have
+  \begin{align*}
+    k_n | k_{n-1} \xi - h_{n-1} |
+    + k_{n-1} |k_n \xi - h_n |
+    &=
+      k_0 | k_{-1} \xi - h_{-1} |
+      + k_{-1} |k_0 \xi - h_0 | \\
+    &=
+      1 \cdot | 0 \cdot \xi - 1 |
+      + 0 \cdot |k_0 \xi - h_0 | \\
+    &=
+      1.
+  \end{align*}
+  Suppose $n = -1$. 
+  Then we have
+  \begin{align*}
+    k_n | k_{n-1} \xi - h_{n-1} |
+    + k_{n-1} |k_n \xi - h_n |
+    &=
+      k_{-1} | k_{-2} \xi - h_{-2} |
+      + k_{-2} |k_{-1} \xi - h_{-1} | \\
+    &=
+      0 \cdot | k_{-2} \xi - h_{-2} |
+      + 1 \cdot |0 \cdot \xi - 1 | \\
+    &=
+      1.
+  \end{align*}
+  Now we have showed the equality holds for all $n \geq -1$.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 10
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.5.1) \\[4ex]
+  Prove that the first assertio nin theorem 7.13 holds in case
+  $n = 0$ if $k_1 > 1$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  We proceed in the same way that is outlined in NZM.
+  Suppose the first part of theorem 7.13 if false. 
+  Then 
+  \begin{align*}
+    \left| \xi - \frac{a}{b} \right| 
+    &< 
+    \left| \xi - \frac{h_n}{k_n} \right|  & b\leq k_n\\
+    | \xi b - a | &< | \xi k_n - h_n |.
+  \end{align*}
+  Using the second part of theorem 7.13, we see that 
+  this implies
+  $b \geq k_{n+1}$.
+  If $n = 0$, then $b \geq k_1$ and $b \leq k_0$.
+  But $k_0 = 1$. 
+  So if $k_1 > 1$, then $b > 1$ and $b \leq 1$, which
+  is a contradiction.
+  Thus, the assumption must have been false. 
+  Thus, $b > k_n$ for $n = 0$ when $k_1 > 1$.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 11
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.5.3) \\[4ex]
+  $\ldots$ Prove that every convergent to $\xi$ is a good approximation.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  We use theorem 7.13 to see that 
+  \begin{align*}
+    | \xi b - a | < | \xi k_n - h_n | 
+  \end{align*}
+  For $n \geq 1$ implies $b \geq k_{n+1} > k_n$, so $b > k_n$.
+  Thus, 
+  \begin{align*}
+    | \xi k_n - h_n | 
+    &=
+    \min_{\substack{\text{all $x$} \\ 0 < y \leq k_n}}
+    | \xi y - x |,
+  \end{align*}
+  so $\frac{h_n}{k_n} = r_n$ is a "good approximation" to $\xi$.
+  We proved in problem 7.5.1 that theorem 7.13 holds for $n = 0$
+  when $k_1 > 1$.
+  From the recursive definition of $k_i$, it is easy to see that
+  $k_1 = a_1$.
+  But $a_1 \in \mathbb{Z}^+$, so $a_1 \geq 1$. 
+  If $a_1 > 1$, then $k_1 > 1$ and we are done so we assume that
+  $k_1 = a_1 = 1$.
+  Thus, 
+  \begin{align*}
+    \min_{\substack{\text{all $x$} \\ 0 < y \leq k_1}}
+    | \xi y - x | 
+    &=
+    \min_{\substack{\text{all $x$} \\ 0 < y \leq 1}}
+    | \xi y - x | \\
+    &=
+    \min_{\substack{\text{all $x$}}}
+    | \xi  - x |.
+  \end{align*}
+  Furthermore, $h_0 = a_0 = [\xi]$, so 
+  $|\xi k_0 - h_0| = |\xi - [\xi]|$.
+
+  It actually turns out that the $0^{\text{th}}$ convergent
+  is not necessarily a "good approximation".
+  By theorem 4.1(1), we know that 
+  $0 \leq  \xi  - [\xi] < 1$ so $|\xi - [\xi]| = \xi - [\xi]$,
+  and $|\xi - [\xi] - 1| = -\xi + [\xi] + 1$.
+  We see that if $\xi - [\xi] > \frac{1}{2}$, then
+  \begin{align*}
+    \xi - [\xi] &> \frac{1}{2} \\
+    2 \xi - 2[\xi] &> 1 \\
+    \xi - [\xi] &> -\xi + [\xi] + 1 \\
+    |\xi - [\xi]| &> |\xi - ([\xi] + 1)| \\
+    |\xi k_0 - h_0| 
+    &> 
+      \min_{\substack{\text{all $x$}\\ 0 < y \leq k_0}} 
+      |\xi y - x|.
+  \end{align*}
+  Thus, every convergent $r_n$ is a "good approximation" 
+  to $\xi$
+  except for $r_0$ when $k_1 = 1$.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 12
+%\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.5.4) \\[4ex]
+  Prove that every "good approximation" to $\xi$ is convergent.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Let $\frac{a}{b} \in \mathbb{Q}$ with $\gcd(a,b) = 1$.
+  Suppose $\frac{a}{b}$ is a "good approximation" to $\xi$
+  but isn't a convergent. 
+  First we will show by contradiction that $b = k_i$ for some 
+  $i \in \mathbb{N}$
+  and then that $a = h_i$.
+
+  If $b = k_i$, we are done, so we suppose that 
+  $k_j < b < k_{j+1}$ 
+  for $j \geq 1$ or $j \geq 0$ if $k_1 > 1$.
+  Thus, 
+  \begin{align*}
+    | \xi b - a| 
+    &< 
+      \min_{\substack{\text{all $x$}\\0 < y \leq b}}
+      | \xi y - x| \\
+    | \xi b - a| 
+    &< 
+      | \xi k_j - h_j|,
+  \end{align*}
+  so $b \geq k_{j+1}$ by theorem 7.13.
+  This contradicts our assumption that $b < k_{j+1}$.
+  So if $\frac{a}{b}$ is a "good approximation" to $\xi$, 
+  then $b = k_i$ 
+  for $i \in \mathbb{N}$.
+
+  Let $\frac{a}{b} = \frac{a}{k_i}$ be our good approximation to $\xi$.
+  Using our work in problem 7.5.3, we see that the
+  $i^{\text{th}}$ convergent is a good approximation to $\xi$, so
+  \begin{align*}
+    \min_{\substack{\text{all $x$}\\0 < y \leq b}}
+    | \xi y - x| 
+    &= 
+      \min_{\substack{\text{all $x$}\\0 < y \leq k_i}}
+      | \xi y - x| \\
+    &= 
+      | \xi k_i - h_i|.
+  \end{align*}
+  Thus, if $\frac{a}{k_i}$ is also a good approximation to $\xi$, then
+  \begin{align*}
+    | \xi k_i - a| &= | \xi k_i - h_i|.
+  \end{align*}
+  We have two cases:
+  \begin{enumerate}[(1)]
+    \item $\xi k_i - a = \xi k_i - h_i$: \\
+      We see that 
+      \begin{align*}
+        | \xi k_i - a| &= | \xi k_i - h_i| \\
+        \pm(\xi k_i - a) &= \pm(\xi k_i - h_i) \\
+        \pm \xi k_i \mp a &= \pm \xi k_i \mp h_i \\
+        \mp a &= \mp h_i \\
+        a &= h_i \\
+      \end{align*}
+    \item $(\xi k_i - a) = -(\xi k_i - h_i)$: \\
+      We see that 
+      \begin{align*}
+        | \xi k_i - a| &= | \xi k_i - h_i| \\
+        \mp(\xi k_i - a) &= \pm(\xi k_i - h_i) \\
+        \mp \xi k_i \pm a &= \pm \xi k_i \mp h_i \\
+        \pm a &= \pm 2 \xi k_i \mp h_i \\
+        a &= 2 \xi k_i - h_i,
+      \end{align*}
+      which is impossible since $a \in \mathbb{Z}$.
+  \end{enumerate}
+  Thus, $a = h_i$.
+  In conclusion, if $\frac{a}{b}$ is a good approximation to $\xi$, 
+  then $a = h_i$ and $b = k_i$ for some 
+  $i \in \mathbb{N}$ 
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 13
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.6.4) \\[4ex]
+  Given any constant $c$, prove that there exists an irrational
+  number $\xi$ and infinitely many rational numbers
+  $h/k$ such that 
+  \begin{align}
+    \label{eq:7.6.4.1}
+    \left| \xi - \frac{h}{k} \right| &< \frac{1}{k^c}.
+  \end{align}
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  By theorem 7.11, we see that 
+  \begin{align*}
+    \left| \xi - \frac{h_n}{k_n} \right| &< \frac{1}{k_n k_{n+1}}.
+  \end{align*}
+  Let $c$ be an arbitrary real number.
+  We see that proving $k_{n+1} \geq k_n^{c-1}$ is a sufficient
+  condition to complete the proof because
+  \begin{align*}
+    \frac{1}{k_{n+1}} \leq \frac{1}{k_n^{c-1}} \\
+    \frac{1}{k_n k_{n+1}} \leq \frac{1}{k_n^{c}}.
+  \end{align*}
+  By definition, $k_{n+1} = a_{n+1} k_n + k_{n-1}$.
+  Thus, $a_{n+1} \geq k_n^{c-2}$ is also a sufficient condition
+  because
+  \begin{align*}
+    k_{n+1} &= a_{n+1} k_n + k_{n-1} \\
+            &\geq k_n^{c-1} + k_{n-1} \\ 
+            &\geq k_n^{c-1}.
+  \end{align*}
+  Appealing to the recursive definition of $k_n$, we see that
+  $k_n$ is a function of $a_0, a_1, \cdots, a_n$.
+  Since $a_{n+1}$ is a function of $k_n$, we see that 
+  it is also a function of $a_0, a_1, \cdots, a_n$.
+  Thus, we can construct an infinite continued fraction 
+  $\langle a_0, a_1, a_2, \cdots \rangle$ such that 
+  $a_n \geq k_n^{c-2}$ for all $n \in \mathbb{N}$.
+  By theorem 7.7, the value of any infinite simple continued
+  fraction is irrational, so such a number
+  $\xi = \langle a_0, a_1, a_2, \cdots \rangle$ is guaranteed
+  to exist. 
+  The rational numbers which satisfy equation 
+  \ref{eq:7.6.4.1}
+  are the convergents of $\xi$, of which there are 
+  infinitely many.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 14
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (7.6.5) \\[4ex]
+  Prove that of every two consecutive convergents
+  $h_n/k_n$ to $\xi$ with $n \geq 0$, at least one
+  satisfies
+  \begin{align}
+    \label{eq:7.6.5.1}
+    \left| \xi - \frac{h}{k} \right| &< \frac{1}{2k^2}.
+  \end{align}
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  We proceed by contradiction.
+  Suppose there are two consecutive convergents
+  $\frac{h_n}{k_n}$
+  and 
+  $\frac{h_{n+1}}{k_{n+1}}$
+  for which
+  \begin{align*}
+    \left| \xi - \frac{h}{k} \right| > \frac{1}{2k^2}.
+  \end{align*}
+  Then we see that 
+  \begin{align}
+    \label{eq:7.6.5.2}
+    \left| \xi - \frac{h_n}{k_n} \right| 
+    +  
+    \left| \xi - \frac{h_{n+1}}{k_{n+1}} \right| 
+    > 
+    \frac{1}{2k_n^2}
+    +
+    \frac{1}{2k_{n+1}^2}.
+  \end{align}
+  But $r_n < \xi < r_{n+1}$ or $r_{n+1} < \xi < r_n$ because
+  odd convergents are greater than their limit and even
+  convergents are less than their limit.
+  We suppose that $r_{n+1} > r_n$, but note that the 
+  same results follow when $r_{n+1} < r_n$. 
+  We see that 
+  \begin{align*}
+    \left| r_{n+1} - r_n \right|
+    &=
+      \left| r_{n+1} - \xi + \xi - r_n \right| \\
+    &=
+      \left| r_{n+1} - \xi \right| + \left| \xi - r_n \right| \\
+    &=
+      \left| \xi - \frac{h_{n+1}}{k_{n+1}} \right| 
+      + \left| \xi - \frac{h_{n}}{k_{n}} \right|.
+  \end{align*}
+  Furthermore, by theorem 7.5 we see that 
+  \begin{align*}
+    | r_{n+1} - r_n | = \frac{1}{k_{n+1} k_n}.
+  \end{align*}
+  Now we can plug this into equation \ref{eq:7.6.5.2} to get
+  \begin{align*}
+    \frac{1}{k_{n+1} k_n}
+    &> 
+      \frac{1}{2k_n^2}
+      +
+      \frac{1}{2k_{n+1}^2} \\
+    2
+    &> 
+      \frac{k_{n+1}}{k_n} + \frac{k_n}{k_{n+1}}.
+  \end{align*}
+
+  Call $x = \frac{k_{n+1}}{k_n}$. 
+  Clearly, $x > 0$.
+  We wish to find solutions to the equation
+  \begin{align*}
+    2 &> x + x^{-1}.
+  \end{align*}
+  We see that 
+  \begin{align*}
+    2 &> x + x^{-1} \\
+    2x &> x^2 + 1 & \text{no sign change as $x > 0$} \\
+    0 &> x^2 - 2x + 1 \\
+    0 &> (x-1)^2,
+  \end{align*}
+  but $(x-1)^2 > 0$ for all $x \in \mathbb{Q}^+$, so we 
+  have arrived at a contradiction.
+  Thus, one of the convergents
+  $\frac{h_n}{k_n}$
+  and 
+  $\frac{h_{n+1}}{k_{n+1}}$
+  must satisfy equation
+  \ref{eq:7.6.5.1}.
+\vfill
+\qed
+
+
+
+\end{document}

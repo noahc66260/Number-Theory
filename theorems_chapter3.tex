@@ -1,0 +1,66 @@
+\documentclass{amsart}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{enumerate}
+
+\newcounter{chapter}
+\setcounter{chapter}{3}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{note*}{Note}
+
+\begin{document}
+\setcounter{theorem}{23}
+
+\section*{Chapter 3}
+
+\begin{lemma}
+  Let $f(x,y) = ax^2 + bxy + cy^2$ be a reduced positive definite form.
+  If for some pair of integers $x$ and $y$ we have $\gcd(x,y) = 1$
+  and $f(x,y) \leq c$, then $f(x,y) = a$ or $c$, and the point
+  $(x,y)$ is one of the seix points
+  $\pm(1,0), \pm(0,1), \pm (1,-1)$.
+  Moreover, the number of proper representations of $a$ by $f$ is
+  \[
+    \begin{cases}
+      2 & \text{if}\ a < c \\
+      4 & \text{if}\ 0 \leq b < a = c,\ \text{and} \\
+      6 & \text{if}\ a = b = c.
+    \end{cases}
+  \]
+\end{lemma}
+
+\begin{theorem}
+  Let $f(x,y) = ax^2 + bxy + cy^2$ and 
+  $g(x,y) = Ax^2 + Bxy + Cy^2$ be reduced positive definite quadratic forms.
+  If $f \sim g$  then $f = g$.
+\end{theorem}
+
+\begin{definition*}
+  Let $f$ be a positive definite binary quadratic form.
+  A matrix $M \in \Gamma$ is called an automorph of $f$ if
+  $M$ takes $f$ to itself, that is, 
+  $f(m_{11}x + m_{12}y, m_{21}x + m_{22}y) = f(x,y)$.
+  The number of automorphs of $f$ is denoted by
+  $w(f)$.
+\end{definition*}
+
+\begin{theorem}
+  Let $f$ and $g$ be equivalent positive definite binary quadratic 
+  forms.
+  Then $w(f) = w(g)$, there are exactly $w(f)$ matrices $M \in \Gamma$
+  that take $f$ to $g$, and there are exactly $w(f)$ matrices $M \in Gamma$
+  that take $g$ to $f$. 
+  Moreover, the only values of $w(f)$ are 2, 4, and 6. 
+  If $f$ is reduced then 
+  \begin{itemize}
+    \item[] $w(f) = 6$ if $a = b =  c$, and 
+    \item[] $w(f) = 4$ if $a = c$ and $b = 0$,
+    \item[] $w(f) = 2$ otherwise.
+  \end{itemize}
+\end{theorem}
+\end{document}

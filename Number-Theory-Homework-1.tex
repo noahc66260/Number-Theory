@@ -1,0 +1,722 @@
+\documentclass[12 pt]{amsart}
+
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{fullpage}
+
+\begin{document}
+
+\allowdisplaybreaks
+\title
+[Problem Set 1]
+{Problem Set 1 \\
+MATH 115 \\
+Number Theory \\
+Professor Paul Vojta}
+
+\author{Noah Ruderman}
+
+\date{ June 30, 2014}
+
+\maketitle
+\begin{center}
+	Problems 1.2.1c, 1.2.2, 1.2.3e, 1.2.14, 1.2.19, 1.2.21, 1.3.6, 1.3.14, 1.3.16, 1.3.18, 1.3.21, 1.4.2, 1.4.6, and 1.4.9 
+	from \emph{An Introduction to The Theory of Numbers}, 
+	$5^{\text{th}}$ edition,
+	by Ivan Niven, Herbert S. Zuckerman, and Hugh L. Montgomery 
+\end{center}
+
+% PROBLEM 1
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.2.1) \\[4ex]
+\emph{Solution.} \\[2ex]
+	\begin{enumerate}
+		\item[c.]
+      \begin{align*}
+        \underbrace{3997}_{r_0} 
+        &= 1 * \underbrace{2947}_{r_1} + \underbrace{1050}_{r_2} \\
+        \underbrace{2947}_{r_1} 
+        &= 2 * \underbrace{1050}_{r_2} + \underbrace{847}_{r_3} \\
+        \underbrace{1050}_{r_2} &= 1 * \underbrace{847}_{r_3} + \underbrace{203}_{r_4} \\
+        \underbrace{847}_{r_3}  &= 4 * \underbrace{203}_{r_4} + \underbrace{35}_{r_5} \\
+        \underbrace{203}_{r_4}  &= 5 * \underbrace{35}_{r_5}  + \underbrace{28}_{r_6} \\
+        \underbrace{35}_{r_5}   &= 1 * \underbrace{28}_{r_6}  + \underbrace{7}_{r_7}  \\
+        \underbrace{28}_{r_6}   &= 4 * \underbrace{7}_{r_7}   + \underbrace{0}_{r_8}
+      \end{align*}
+      \begin{align*}
+        \text{gcd}(2947, 3997) &= (r_7, r_8) \\
+                               &= (7, 0) \\
+                               &= 7
+      \end{align*}
+	\end{enumerate}
+\vfill
+\newpage
+
+
+
+% PROBLEM 2
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.2.2) \\[4ex]
+\emph{Solution.} \\[2ex]
+  \begin{align*}
+    \underbrace{3587}_{r_0} &= 1 * \underbrace{1819}_{r_1} + \underbrace{1768}_{r_2} \\
+    \underbrace{1819}_{r_1} &= 1 * \underbrace{1768}_{r_2} + \underbrace{51}_{r_3} \\
+    \underbrace{1768}_{r_2} &= 34 * \underbrace{51}_{r_3}  + \underbrace{34}_{r_4} \\
+    \underbrace{51}_{r_3}   &= 1 * \underbrace{34}_{r_4} + \underbrace{17}_{r_5} \\
+    \underbrace{34}_{r_4}   &= 2 * \underbrace{17}_{r_5} + \underbrace{0}_{r_6}
+  \end{align*}
+  So $\text{gcd}(3587, 1819) = \text{gcd}(r_5, r_6) = \text{gcd}(17, 0) = 17$.
+
+  Next, $2 * 1819 - 1 * 3587 = 51$.
+  Note that $3587 = 70 * 51 + 17$.
+  \begin{align*}
+    3587 &= 70 * 51 + 17 \\
+    3587 &= 70 * (2 * 1819 - 3587) + 17 \\
+    -140 * 1819 + 71 * 3587 &= 17 \\
+    -140 * 1819 + 71 * 3587 &= \text{gcd}(3587, 1819) \\
+  \end{align*}
+  so $x = -140$, $y = 71$.
+\vfill
+\newpage
+
+
+
+% PROBLEM 3
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.2.3) \\[4ex]
+\emph{Solution.} \\[2ex]
+	\begin{enumerate}
+		\item[e.]
+      From
+      \[
+        f(x,y,z) = 6 x + 10 y + 15 z = 1,
+      \]
+      we see that
+      \[
+        f(x,y,z) \equiv 1 \mod n, n \in \mathbb{Z}^+.
+      \]
+      For $n = 2, 3, 5$ we get the congruences
+      \begin{align*}
+        z &\equiv 1 \mod 2 \\
+        y &\equiv 1 \mod 3 \\
+        x &\equiv 1 \mod 5.
+      \end{align*}
+%      The choice of values $z = -1$, $x = 1$, $y = 1$ solves the equation.
+%      Note to self: is $z$ fixed?
+      The gcd of 6 and 10 is 2 such that $6 \cdot -3 + 10 \cdot 2 = 2$.
+      Next, we see that
+      \begin{align*}
+        6x + 10 y &= 1 - 15 z \\
+                  &= 1 - 15 (2k + 1) \qquad \text{(since $z$ is odd)} \\
+          &= 1 - 30k - 15 \\
+          &= -14 - 30k \\
+          &= 2 ( -7 - 15k) \\
+          &= (6 \cdot -3 + 10 \cdot 2)(-7 - 15k) \\
+          &= 6 \cdot (3(7+15k)) + 10 \cdot (2(-7 - 15k)),
+      \end{align*}
+      so
+      \begin{align*}
+        z &= 2k + 1\\
+        x &= 21 + 45k \\
+        y &= -14 - 30k  
+      \end{align*}
+	\end{enumerate}
+\vfill
+\newpage
+
+
+
+% PROBLEM 4
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.3.14) \\[4ex]
+\emph{Solution.} \\[2ex]
+  If $n$ is odd, we can write $n = 2k + 1$ for some $k \in \mathbb{Z}$. 
+  We have
+  \begin{align*}
+    n^2 - 1 &= (2k + 1)^2 - 1 \\
+      &= (4k^2 + 4k + 1) - 1 \\
+      &= 4k^2 + 4k \\
+      &= 4k(k + 1).
+  \end{align*}
+  Either $k$ or $k + 1$ is even, so we can factor our 2 from one of these
+  terms to get
+  \[
+    4k (k + 1) = 8c,
+  \]
+  for some $c \in \mathbb{Z}$.
+  Since $8c = n^2 -1$, $n^2 - 1$ is divisible by 8 by definition.
+\vfill
+\newpage
+
+
+
+% PROBLEM 5
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.3.19) \\[4ex]
+\emph{Solution.} \\[2ex]
+  Suppose we have $n$ distinct integers $a_1, a_2, \ldots, a_n \in \mathbb{Z}$.
+  Given that 
+  \begin{equation} \label{eq:coprimeTerms}
+    \text{gcd}(a_i, a_j) = 1
+  \end{equation}
+  for $i \neq j$, if we consider the prime factorizationa
+  \[
+    a_k = \prod_p p^{\alpha_k(p)}, 1 \leq k\in \mathbb{N} \leq n,
+  \]
+  Then $\text{min}\left(\alpha_i(p), \alpha_j(p)\right) = 0$ for all prime $p$.
+  We prove that the set of numbers is relatively prime by contradiction.
+  Suppose, they are not relatively prime.
+  Then 
+  \[
+    \text{gcd}(a_1, a_2, \ldots, a_n) \neq 1.
+  \]
+  This implies that 
+  \[
+    \text{min}(\alpha_1(p), \alpha_2(p), \ldots, \alpha_n(p)) \neq 0
+  \]
+  for some prime $p$. 
+  From this we have, 
+  \[
+    \alpha_k(p) \geq 1
+  \]
+  for all $1 \leq k \leq n$ for some $p$.
+  Therefore
+  \begin{equation}
+    \text{min}(\alpha_i(p), \alpha_j(p)) \geq 1
+  \end{equation}
+  for all $i, j$ given some prime $p$.
+  This contradicts equation $\ref{eq:coprimeTerms}$.
+  Therefore, 
+  \[
+    \text{gcd}(a_1, a_2, \ldots, a_n) = 1
+  \]
+\vfill
+\newpage
+
+
+
+% PROBLEM 6
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.3.21) \\[4ex]
+\emph{Solution.} \\[2ex]
+  Regardless of the value of $k$, it is easy to see that
+  $6k + 5 \equiv 1 \mod 2$.
+  Thus, we can write odd numbers of the form $6k + 5$.
+  If we can also write that number in the form $3k' - 1$, then
+  \begin{align*}
+    3k' - 1 &\equiv 1 \mod 2 \\
+        3k' &\equiv 2 \mod 2 \\
+        3k' &\equiv 0 \mod 2 \\
+        k'  &\equiv 0 \mod 2,
+  \end{align*}
+  so $k'$ is even.
+  Now we try to find a formula for $k$ in terms of $k'$ if a number
+  can be written in both forms.
+  We have
+  \begin{align*}
+    6k + 5 &= 3k' - 1 \\
+    6k - 3k' &= -6 \\
+    3(2k - k') &= -6 \\
+    2k - k' &= -2 \\
+    k &= \frac{k' - 2}{2}.
+  \end{align*}
+  Since $k'$ is even, the term on the right is an integer. 
+  Thus, if a number can be written in the form 
+  $6k + 5$, we can substitute $k = \frac{k' - 2}{2}$ to recover
+  the form $3k'-1$. 
+\vfill
+\newpage
+
+
+
+% PROBLEM 7
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.3.6) \\[4ex]
+\emph{Solution.} \\[2ex]
+  By the fundamental theorem of arithmetic, any number $n \in \mathbb{Z}^+$ can be written
+  uniquely (up to a permutation) in form
+  \[
+    n = \prod_p p^{\alpha(p)}
+  \]
+  where $p$ is prime. 
+  We can factor our factors of 2 to get
+  \[
+    n = \underbrace{2^{\alpha(2)}}_{2^r} 
+        \underbrace{\prod_{p\neq 2} p^{\alpha(p)}}_{m}.
+  \]
+  Since all primes other than 2 are odd, $m$ is the product of odd numbers and must also be odd.
+  Since $r = \alpha(2)$ and $\alpha(p) \geq 0$ for all prime $p$, $r \geq 0$, completing the
+  proof.
+\vfill
+\newpage
+
+
+
+% PROBLEM 8
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.3.14) \\[4ex]
+\emph{Solution.} \\[2ex]
+  In this proof I use the fact that if 
+  $\text{gcd}(a, b) = d$ 
+  and 
+  $\text{gcd}(a, c) = 1$ 
+  then
+  $\text{gcd}(a, bc) = d$.
+  I also use the notation $p^e \parallel a$ for a prime $p$ and $e,a \in \mathbb{Z}$
+  to mean that $e$ is the highest power of $p$ that divides $a$.
+
+  It is clear that from 
+  $\text{gcd}(a, p^2) = p$ 
+  that 
+  $p \parallel a$.
+  Thus, $np = a$ for some $n \in \mathbb{Z}$ where 
+  $\text{gcd}(n, p) = 1$.
+
+  Likewise, from
+  $\text{gcd}(b, p^3) = p^2$ 
+  we see that 
+  $p^2 \parallel b$.
+  Thus, $mp^2 = b$ for some $m \in \mathbb{Z}$ where 
+  $\text{gcd}(m, p^2) = 1$.
+  This also implies
+  $\text{gcd}(m, p) = 1$.
+
+  Now we can prove
+  $\text{gcd}(ab, p^4) = p^3$.
+  We know that
+  \begin{equation}
+    \label{eq:gcdp3}
+    \text{gcd}(p^4, p^3) = p^3.
+  \end{equation}
+  Since 
+  $\text{gcd}(p, n) = 1$ 
+  and 
+  $\text{gcd}(p, m) = 1$,
+  $\text{gcd}(p, nm) = 1$
+  and therefore
+  \begin{equation}
+    \label{eq:gcdmn}
+    \text{gcd}(p^4, nm) = 1.
+  \end{equation}
+  Combining equations $\ref{eq:gcdp3}$ and \ref{eq:gcdmn} we get
+  \begin{align*}
+    \text{gcd}(p^4, mnp^3) &= 1 \\
+    \text{gcd}(p^4, ab) &= 1 \\
+    \text{gcd}(ab, p^4) &= 1
+  \end{align*}
+
+  Now we aim to prove that $\text{gcd}(a + b, p^4) = p$.
+  We start with $\text{gcd}(n + mp, p)$. 
+  Clearly this gcd is equal to 1 or $p$.
+  If the gcd is $p$, then $p \mid n + mp$.
+  Since $p \mid mp$, then $p \mid n$.
+  But $\text{gcd}(n, p) = 1$, so $p \not \, \mid n$.
+  Thus, the gcd is 1 so
+  \begin{equation} \label{eq:gcdpnm}
+    \text{gcd}(p^4, n + mp) = 1
+  \end{equation}
+  Clearly,
+  \begin{equation} \label{eq:gcdpp}
+    \text{gcd}(p^4, p) = p
+  \end{equation}
+  Combining equations \ref{eq:gcdpnm} and \ref{eq:gcdpp}, we have
+  \begin{align*}
+    \text{gcd}(p^4, p(n + mp)) &= p \\
+    \text{gcd}(p^4, pn + mp^2) &= p \\
+    \text{gcd}(p^4, a + b) &= p \\
+    \text{gcd}(a + b, p^4) &= p 
+  \end{align*}
+
+\vfill
+\newpage
+
+
+
+% PROBLEM 9
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.3.16) \\[4ex]
+\emph{Solution.} \\[2ex]
+  From the description of $n$, we see that 
+  \[
+    n = 2a^2 = 3b^3 = 5c^5,
+  \]
+  for some $a,b,c \in \mathbb{Z}^+$.
+  Consider the prime factorization of $n$,
+  \[
+    n = \prod_p p^{\alpha(p)}a
+  \]
+  for primes $p$.
+  We see that 
+  \begin{align*}
+    \alpha(2) &\equiv 1 \mod 2 \\
+    \alpha(2) &\equiv 0 \mod 3 \\
+    \alpha(2) &\equiv 0 \mod 5 
+  \end{align*}
+  The solution is $\alpha(2) \equiv 15 \mod 30$.
+
+  Likewise, 
+  \begin{align*}
+    \alpha(3) &\equiv 0 \mod 2 \\
+    \alpha(3) &\equiv 1 \mod 3 \\
+    \alpha(3) &\equiv 0 \mod 5 
+  \end{align*}
+  The solution is $\alpha(3) \equiv 10 \mod 30$.
+
+  Finally, 
+  \begin{align*}
+    \alpha(5) &\equiv 0 \mod 2 \\
+    \alpha(5) &\equiv 0 \mod 3 \\
+    \alpha(5) &\equiv 1 \mod 5 
+  \end{align*}
+  The solution is $\alpha(5) \equiv 6 \mod 30$.
+
+  By guess and check, the factorization 
+  \[
+    n = 2^{15} \cdot 3^{10} \cdot 5^{6}
+  \]
+  is a solution.
+\vfill
+\newpage
+
+
+
+% PROBLEM 10
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.3.18) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to prove that 
+  $\text{gcd}(a^2, b^2) = c^2 \iff \text{gcd}(a,b) = c$.
+  Let 
+  \begin{align*} 
+    a &= \prod_p p^{\alpha(p)} \\
+    b &= \prod_p p^{\beta(p)}
+  \end{align*} 
+
+  \noindent
+  ($\longleftarrow$) \\
+  We see that 
+  \[
+    c = \prod_p p^{\text{min}(\alpha(p), \beta(p))}
+  \]
+  Clearly,
+  \begin{align*}
+    a^2 &= \left( \prod_p p^{\alpha(p)} \right)^2 \\
+        &= \prod_p \left( p^{\alpha(p)} \right)^2 \\
+        &= \prod_p p^{2\alpha(p)},
+  \end{align*}
+  and 
+  \begin{align*}
+    b^2 &= \left( \prod_p p^{\beta(p)} \right)^2 \\
+        &= \prod_p \left( p^{\beta(p)} \right)^2 \\
+        &= \prod_p p^{2\beta(p)}.
+  \end{align*}
+  Let $c' = \text{gcd}(a^2, b^2)$.
+  Then 
+  \[
+    c' = \prod_p p^{\text{min}(2\alpha(p), 2\beta(p))}.
+  \]
+  But 
+  \begin{align*}
+    c^2 &= \left( \prod_p p^{\text{min}(\alpha(p), \beta(p))} \right)^2 \\
+        &= \prod_p \left( p^{\text{min}(\alpha(p), \beta(p))} \right)^2 \\
+        &= \prod_p p^{2 \cdot \text{min}(\alpha(p), \beta(p))} \\
+        &= \prod_p p^{\text{min}(2\alpha(p), 2\beta(p))}.
+  \end{align*}
+  so $c^2 = c'$ and $\text{gcd}(a,b) = c$ implies $\text{gcd}(a^2,b^2) = c^2$. \\
+
+  \noindent
+  ($\longrightarrow$) \\
+  To prove the converse, 
+  assuming $\text{gcd}(a^2,b^2) = c^2$,
+  we simply reverse the steps for how we
+  calculated $a^2, b^2$ and $c^2$ to get formulas for $a,b,c$.
+  We know that $\text{gcd}(a,b) = \prod_p p^{\text{min}(\alpha(p), \beta(p))}$, 
+  which is equal to $c$, so $c = \text{gcd}(a,b)$.
+  
+  
+
+\vfill
+\newpage
+
+
+
+% PROBLEM 11
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.3.21) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to prove that 
+  \begin{equation}
+  \label{eq:lcmgcd}
+    \text{lcm}(a,b,c) \cdot \text{gcd}(ab,bc,ca) = \left| abc \right|.
+  \end{equation}
+  Consider the prime factorization of both sides of the equation.
+  They must be equal if each exponent for every prime in their prime
+  factorization is equal.
+  Let 
+  \begin{align*}
+    a &= \prod_p p^{\alpha(p)}, \\
+    b &= \prod_p p^{\beta(p)}, \\
+    c &= \prod_p p^{\gamma(p)}.
+  \end{align*}
+  Consider an arbitrary prime $p$.
+  The exponent for this prime on the left hand side is 
+  \[
+    \text{max}(\alpha(p), \beta(p), \gamma(p)) 
+    +
+    \text{min}(\alpha(p) + \beta(p), \beta(p) + \gamma(p), 
+               \gamma(p) + \alpha(p)). 
+  \]
+  Suppose that $\alpha(p) \geq \beta(p) \geq \gamma(p))$.
+  Then 
+  \[
+  \text{max}(\alpha(p), \beta(p), \gamma(p)) = \alpha(p),
+  \]
+  and 
+  \[
+    \text{min}(\alpha(p) + \beta(p), \beta(p) + \gamma(p), 
+              \gamma(p) + \alpha(p)) 
+              = \beta(p) + \gamma(p),
+  \]
+  so 
+  \[
+    \text{max}(\alpha(p), \beta(p), \gamma(p)) 
+    +
+    \text{min}(\alpha(p) + \beta(p), \beta(p) + \gamma(p), 
+               \gamma(p) + \alpha(p))
+    = 
+    \alpha(p) + \beta(p) + \gamma(p).
+  \]
+  We see that the right hand side is the exponent for the same
+  prime in the prime factorization of $|abc|$.
+
+  Since the ordering of the exponents $\alpha(p), \beta(p)$ 
+  and $\gamma(p)$
+  was arbitrary, this holds for any ordering.
+  Furthermore, since $p$ was an arbitrary prime,
+  this condition holds for any prime $p$.
+  Thus the exponents for each prime are the same on each
+  side of equation \ref{eq:lcmgcd} so the equation is true.
+\vfill
+\newpage
+
+
+
+% PROBLEM 12
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.4.2) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to show that for $n \in \mathbb{N} \geq 1$, that
+  \begin{equation}
+    \label{eq:induction}
+    \sum_{k = 0}^n (-1)^k \binom{n}{k} = 0.
+  \end{equation}
+  We show this with induction.
+  Assume equation \ref{eq:induction}.
+  We have
+  \begin{align*}
+    \sum_{k = 0}^{n+1} (-1)^k \binom{n+1}{k}
+    &=
+      \left[ \sum_{k = 0}^{n} (-1)^k \binom{n+1}{k} \right]
+      + (-1)^{n+1} \binom{n+1}{ k+1} \\
+    &=
+      \left[ \sum_{k = 0}^{n} (-1)^k \left( \binom{n}{k} + \binom{n}{k-1} \right) \right]
+      + (-1)^{n+1} \\
+    &=
+      \underbrace{\sum_{k = 0}^{n} (-1)^k \binom{n}{k}}_{= 0 \ \text{(by supposition)}}
+      +
+      \sum_{k = 0}^{n} (-1)^k \binom{n}{k-1}
+      + (-1)^{n+1} \\
+    &=
+      \sum_{k = 1}^{n} (-1)^k \binom{n}{k-1}
+      + (-1)^{n+1} \\
+    &=
+      \sum_{k = 0}^{n-1} (-1)^{k+1} \binom{n}{k}
+      + (-1)^{n+1} \\
+    &=
+      \underbrace{\sum_{k = 0}^{n} (-1)^{k+1} \binom{n}{k}}_{= 0 \ \text{by (*)}}
+      - (-1)^{n+1} \binom{n}{n}
+      + (-1)^{n+1} \\
+    &=
+      - (-1)^{n+1} 
+      + (-1)^{n+1} \\
+    &=
+      0.
+  \end{align*}
+  Here, (*) is from multiplying both sides of equation \ref{eq:induction} by -1. 
+  Thus, the inductive step is true.
+
+  Next, we use the base case of $n = 1$, where
+  \begin{align*}
+    \sum_{k = 0}^1 (-1)^k \binom{1}{k}
+    &= 
+      (-1)^0 \binom{1}{0}
+      + 
+      (-1)^1 \binom{1}{1} \\
+    &=
+      1 - 1 \\
+    &= 
+      0,
+  \end{align*}
+  completing the proof.
+\vfill
+\newpage
+
+
+
+% PROBLEM 13
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.4.6) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to show that if $f(x), g(x)$ are $n$-times differentiable, then
+  the $n^{\text{th}}$ derivative of $f(x)g(x)$ is 
+  \begin{equation}
+    \label{eq:induction2}
+    \sum_{k = 0}^n \binom{n}{k} f^{(k)}(x) g^{(n-k)}(x).
+  \end{equation}
+  We will prove this with induction.
+  First, assume equation \ref{eq:induction2}.
+  Next,
+  \begin{align*}
+    \frac{d}{dx} \sum_{k = 0}^n \binom{n}{k} f^{(k)}(x) g^{(n-k)}(x)
+    &=
+      \sum_{k = 0}^n \binom{n}{k} 
+      \left( f^{(k + 1)}(x) g^{(n-k)}(x) + f^{(k)}(x) g^{(n + 1-k)}(x)  \right) \\
+%    &=
+%      \sum_{k = 0}^n 
+%      \left(
+%        \binom{n}{k-1} 
+%        f^{(k)}(x) g^{(n-(k-1))}(x)
+%      + 
+%        \binom{n}{k}
+%        f^{(k)}(x) g^{(n + 1-k)}(x)  
+%      \right) 
+%      + 
+%      f^{(n+1)}(x) g^{(0)}(x)\\
+    &=
+      \sum_{k = 0}^n 
+      f^{(k)}(x) g^{(n + 1 - k)}(x)
+      \left(
+        \binom{n}{k-1} 
+      + 
+        \binom{n}{k}
+      \right) 
+      + 
+      f^{(n+1)}(x) g^{(0)}(x)\\
+    &=
+      \sum_{k = 0}^n 
+      f^{(k)}(x) g^{(n + 1 - k)}(x)
+      \binom{n+1}{k}
+      + 
+      f^{(n+1)}(x) g^{(0)}(x)\\
+    &=
+      \sum_{k = 0}^{n+1} 
+      f^{(k)}(x) g^{(n + 1 - k)}(x)
+      \binom{n+1}{k}.
+  \end{align*}
+  As our base case, suppose $n = 0$.
+  \begin{align*}
+    \sum_{k = 0}^0 \binom{0}{k} f^{(k)}(x) g^{(0-k)}(x)
+    &=
+    \binom{0}{0}f^{(0)}(x) g^{(0)}(x) \\
+    &=
+    f(x) g(x).
+  \end{align*}
+  Thus, 
+  equation \ref{eq:induction2} is true for all $n \geq 0$.
+\vfill
+\newpage
+
+
+
+% PROBLEM 14
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.4.9) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to prove this by induction.
+  For our induction step, suppose that 
+  \begin{equation}
+    \label{eq:induction3}
+    \Delta^n f(x) = \sum_{j = 0}^k (-1)^j \binom{k}{j} f(x + k - j)
+  \end{equation}
+  We see that 
+  \begin{align*}
+    \Delta^{n+1} f(x)
+    &=
+      \Delta(\Delta^{n} f(x)) \\ 
+    &=
+      \Delta \sum_{j = 0}^k (-1)^j \binom{k}{j} f(x + k - j) \\
+    &=
+      \sum_{j = 0}^k (-1)^j \binom{k}{j} \Delta f(x + k - j) \\
+    &=
+      \sum_{j = 0}^k (-1)^j \binom{k}{j} 
+      \left( 
+        f(x + (k + 1) - j) - f(x + k - j) 
+      \right) \\
+    &=
+      \sum_{j = 0}^k 
+      f(x + (k + 1) - j)
+      \left( 
+        (-1)^j \binom{k}{j}
+        - 
+        (-1)^{j-1} \binom{k}{j-1}
+      \right) 
+      - f(x)(-1)^k \\
+    &=
+      \sum_{j = 0}^k 
+      f(x + (k + 1) - j)
+      (-1)^j
+      \binom{k+1}{j}
+      - f(x)(-1)^k \\
+    &=
+      \sum_{j = 0}^k 
+      f(x + (k + 1) - j)
+      (-1)^j
+      \binom{k+1}{j}
+      + f(x)(-1)^{k+1} \\
+    &=
+      \sum_{j = 0}^{k+1} 
+      (-1)^j
+      \binom{k+1}{j}
+      f(x + (k + 1) - j),
+  \end{align*}
+  completing the induction step.
+
+  As our base case, consider $k = 1$.
+  \begin{align*}
+      \sum_{j = 0}^1 (-1)^j \binom{1}{j}  f(x + 1 - j)
+      &=
+        (-1)^0 \binom{1}{0} f(x + 1 - 0)
+        +
+        (-1)^1 \binom{1}{1} f(x + 1 - 1) \\
+      &=
+        f(x + 1)
+        +
+        - f(x) \\
+      &=
+        \Delta f(x)
+  \end{align*}
+  by definition.
+  Thus, equation \label{eq:induction3} is true for all $k \geq 1$.
+\vfill
+
+
+
+\end{document}

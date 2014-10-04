@@ -1,0 +1,930 @@
+\documentclass[12 pt]{amsart}
+
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{mathrsfs} % woa- I was able to install this myself and it works!
+
+\begin{document}
+
+\allowdisplaybreaks
+\title
+[Problem Set 2]
+{Problem Set 2 \\
+MATH 115 \\
+Number Theory \\
+Professor Paul Vojta}
+
+\author{Noah Ruderman}
+
+\date{ July 7, 2014}
+
+\maketitle
+\begin{center}
+	Problems 1.4.4ab, 2.1.6, 2.1.12, 2.1.20, 2.1.32, 2.1.40, 2.1.59, 2.2.6abc, 
+  2.2.8, 2.3.4, 2.3.7, 2.3.14, 2.3.16, 2.3.17, and 2.3.20 
+	from \emph{An Introduction to The Theory of Numbers}, 
+	$5^{\text{th}}$ edition,
+	by Ivan Niven, Herbert S. Zuckerman, and Hugh L. Montgomery 
+\end{center}
+
+% PROBLEM 1
+\clearpage
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (1.4.4) \\[4ex]
+\emph{Solution.} \\[2ex]
+	\begin{enumerate}
+		\item[a.]
+      %$k \in \mathscr{S}$
+      %We know that $\mathscr{S}$ has $2n$ elements.
+      Consider a set $A$ with $n \in \mathbb{N}$ elements, for an even $n$. 
+      Let us find a recursive expression for the number of partitions, each
+      of which only containing two elements. 
+      Let $P(n)$ be the number of ways we may form such partitions in a 
+      finite set of $n$ elements. 
+      Consider an arbitrary element $k \in A$.
+      There are $(n-1)$ ways $k$ can be paired with another element, 
+      and $P(n-2)$ ways the remaining $n-2$ elements can be partitioned
+      into sets of 2.
+      So we write
+      \[
+        P(n) = (n-1)\cdot P(n-2)
+      \]
+      Clearly, there is one way to form a partition with only 2 elements
+      so 
+      \[
+        P(2) = 1.
+      \]
+      
+      Now $|\mathscr{S}| = 2n$, so the number of ways we can partition
+      $\mathscr{S}$ into sets of cardinality 2 is 
+      \begin{align*}
+        P(2n) &= (2n-1) P(2n-2) \\
+              &= (2n-1)(2n-3)P(2n-4) \\
+              &\ldots  \\
+              &= (2n-1)(2n-3)\cdots 5 \cdot 3 \cdot  P(2) \\
+              &= (2n-1)(2n-3)\cdots 5 \cdot 3 \cdot 1
+      \end{align*}
+      We note that 
+      \begin{align}
+          (2n)(2n-1)(2n-2) \cdots (2)(1) &= (2n)! \notag \\
+          \left[
+            (2n-1)(2n-3)\cdots (5)(3)(1)
+          \right]
+          \left[
+            (2n)(2n-2) \cdots (6)(4)(2)
+          \right]
+          &= (2n)! \notag \\
+          \left[
+            (2n-1)(2n-3)\cdots (5)(3)(1)
+          \right]
+          \left[
+            2^n (n)(n-1) \cdots (3)(2)(1)
+          \right] 
+          &= (2n)! \notag \\
+          \left[
+            (2n-1)(2n-3)\cdots (5)(3)(1)
+          \right]
+            2^n n!
+          &= (2n)! \notag \\
+            \label{eq:1.4.4}
+          (2n-1)(2n-3)\cdots 5 \cdot 3 \cdot 1
+          &= 
+          \frac{(2n)!}{2^n n!}
+      \end{align}
+      \vfill
+      \clearpage
+      \phantom{\quad}
+      \vfill
+		\item[b.]
+      It is easy to see that 
+      \begin{align*}
+        (n+1)(n+2) \cdots (2n) &= \frac{(2n)!}{n!}
+      \end{align*}
+      Using equation \ref{eq:1.4.4}, we see that 
+      \begin{align*}
+        \frac{(n+1)(n+2) \cdots (2n)}{2^n} 
+          &= \frac{(2n)!}{2^n n!} \\
+          &= (2n-1)(2n-3)\cdots 5 \cdot 3 \cdot 1 \in {N}
+      \end{align*}
+      so $n_0 = \prod_{k=1}^{n} (n + k)$ is divisible by $2^n$.
+      Furthermore, the quotient of $\frac{n_0}{2^n}$ is odd, since
+      the product of odd numbers is always odd. 
+      Thus, $\frac{n_0}{2^n}$ is not divisible by 2, and thus
+      $n_0$ is not divisible by $2^{n+1}$, because if it were, 
+      $\frac{n_0}{2^{n+1}} = \frac{n_0 \big/ 2^n}{2}$ would be 
+      an integer, which we have shown is impossible.
+	\end{enumerate}
+\vfill
+\newpage
+
+
+
+% PROBLEM 2
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.1.6) \\[4ex]
+\emph{Solution.} \\[2ex]
+  Let $p$ be a prime number.
+  If $a^2 \equiv b^2 \mod p$ then
+  \begin{align*}
+    a^2 &\equiv b^2 \mod p \\
+    p &\mid a^2 - b^2 \\
+    p &\mid (a+b) (a-b)
+  \end{align*}
+  By Theorem 1.15, $p$ must divide $(a+b)$ or $(a-b)$.
+
+  %If $p$ divides $(a+b)$ we are done, so we suppose that it
+  %does not.
+  %Since the gcd of $p$ and another number can only be 
+  %1 or $p$, we see that it must be 1 because if it were $p$, 
+  %then $p \mid (a + b)$, which is false by assumption. 
+  %So $\text{gcd}(p, a+b) = 1$.
+
+  %Now we use Theorem 1.10 from Niven et al., namely
+  %\begin{center}
+  %  If $c' \mid a'b'$ and $(b', c') = 1$, then $c' \mid a'$.
+  %\end{center}
+  %Here we substitute $c' = p$, $a' = (a+b)$, $b' = (a - b)$.
+  %So if $\text{gcd}(p, a+b) = 1$, then $p \mid (a-b)$.
+\vfill
+\newpage
+
+
+
+% PROBLEM 3
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.1.12) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We want to show that $19 \not \, \mid 4n^2 + 4$ for any 
+  $n \in \mathbb{Z}$.
+
+  Theorem 2.12 tells us that $x^2 \equiv -1 \mod p$ for
+  a given prime $p$ if and only if 
+  $p = 2$ or $p \equiv 1 \mod 4$.
+
+  Since $19 \equiv 3 \not \equiv 1 \mod 4$, we see that
+  for any $n \in \mathbb{Z}$, 
+  \begin{align*}
+    n^2 &\not \equiv -1 \mod 19  \\
+    n^2 + 1 &\not \equiv 0 \mod 19  \\
+    4(n^2 + 1) &\not \equiv 0 \mod 19  \\
+    4n^2 + 4 &\not \equiv 0 \mod 19  \\
+    19 &\not \, \mid (4n^2 + 4).
+  \end{align*}
+  
+
+  %Suppose we have a prime $p$ that satisfies that condition.
+  %\begin{align*}
+  %  n^2 &\equiv -1 \mod p \\
+  %  n^2 + 1 &\equiv 0 \mod p \\
+  %  4(n^2 + 1) &\equiv 0 \mod p & (*) \\
+  %  4n^2 + 4 &\equiv 0 \mod p \\
+  %  p &\mid (4n^2 + 4).
+  %\end{align*}
+  %Since each of the above are iff statements 
+  %(except for (*), where $\text{gcd}(p, 4) = 1$ must hold
+  %to go in the reverse direction),
+  %we see that for $p \neq 2$, $p \mid (4n^2 + 4)$ for some
+  %$n \in \mathbb{Z}_p$ if $p \equiv 1 \mod 4$.
+  %But $19 \equiv 3 \not \equiv 1 \mod 4$, so there is no 
+  %solution to the congruence $19 \mid (4n^2 + 4)$ for
+  %any $n \in \mathbb{Z}_{19}$, and by extension in $\mathbb{Z}$. 
+\vfill
+\newpage
+
+
+
+% PROBLEM 4
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.1.20) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We use Theorem 2.3(3).
+  Let $m_1 = 2$, $m_2 = 3$, $m_3 = 7$, $x = n^7 - n$, 
+  $n \in \mathbb{Z}$, and 
+  $y = 0$.
+  Then $n^7 - n \equiv 0 \mod m_i$ if and only if 
+  $n^7 - n \equiv 0 \mod 42$.
+
+  Using Fermat's Theorem (Theorem 2.7), we see that 
+  \begin{align*}
+    n^7 &\equiv n \mod 7 \\
+    n^7 - n &\equiv 0 \mod 7.
+  \end{align*}
+
+  Likewise, we see that 
+  \begin{align*}
+    n^7     &= \left( n^3 \right)^2 n \\
+    n^7     &\equiv n^2 \cdot n \mod 3 & \text{(Fermat)}\\
+    n^7     &= n^3 \\
+    n^7     & \equiv n \mod 3 & \text{(Fermat)}  \\
+    n^7-n   & \equiv 0 \mod 3.
+  \end{align*}
+
+  And finally, we see that 
+  \begin{align*}
+    n^7 &= \left( n^2 \right)^3 n \\
+    n^7    &\equiv n^3 \cdot n  \mod 2 & \text{(Fermat)}\\
+    n^7    &= n^4 \\
+    n^7    &= \left( n^2 \right)^2 \\
+    n^7    &\equiv n^2  \mod 2 & \text{(Fermat)}\\
+    n^7    &\equiv n \mod 2 & \text{(Fermat)} \\
+    n^7-n  &\equiv 0 \mod 2.
+  \end{align*}
+
+  Since we have shown 
+  for any $n \in \mathbb{Z}$,
+  $n^7 - n \equiv 0 \mod m_i$ for $i = 1,2,3$, 
+  Theorem 2.3(3) implies
+  \[
+  n^7 - n \equiv 0 \mod \text{lcm}(m_1, m_2, m_3) = 42, 
+  \]
+  which is equivalent to the statement 
+  \[
+    42 \mid n^7 - n
+  \]
+  for all $n \in \mathbb{Z}$.
+\vfill
+\newpage
+
+
+
+% PROBLEM 5
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.1.32) \\[4ex]
+\emph{Solution.} \\[2ex]
+  Suppose $m$ is odd.
+  Clearly, the set 
+  $\{ 1, 2, 3, \ldots, m\}$ is a complete
+  residue system modulo $m$.
+  Since $m$ is odd, $2 \not \, \mid m$, so
+  $\text{gcd}(2, m) = 1$. 
+  By Theorem 2.6, 
+  $\{2 \cdot 1, 2 \cdot 2, 2 \cdot 3, \ldots 2 \cdot m \}
+  = \{ 2, 4, 6, \ldots 2m\}$ is also a complete residue
+  system modulo $m$.
+\vfill
+\newpage
+
+
+
+% PROBLEM 6
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.1.40) \\[4ex]
+\emph{Solution.} \\[2ex]
+  Let $m$ be odd.
+  Clearly, $1, 2, 3, \ldots, m$ is a complete residue system.
+  By definition, for any other complete residue system
+  $r_1, r_2, r_3, \ldots, r_m$, each $r_i \equiv j_i$ for
+  $1 \leq i \leq m$ and a unique $1 \leq j_i \leq m$.
+  Thus, we may write the sum of elements as
+  \begin{align*}
+    \sum_{i = 1}^m r_i 
+    &=
+    \sum_{i = 1}^m (j_i + k_i m) & \text{where $j_i + k_i m = r_i, k_i \in \mathbb{Z}$} \\
+    &=
+      \sum_{i = 1}^m j_i +  \sum_{i = 1}^m k_i m  \\
+    &=
+      \sum_{j = 1}^m j +  \sum_{i = 1}^m k_i m  & \text{since each $j_i$ is unique}\\
+    &=
+      \frac{m(m+1)}{2} +  m \sum_{i = 1}^m k_i \\
+    &=
+      m \left( \frac{(m+1)}{2} +   \sum_{i = 1}^m k_i \right).
+  \end{align*}
+  Clearly, $\sum_{i = 1}^m k_i \in \mathbb{Z}$.
+  Since $m$ is odd, $\frac{m+1}{2} \in \mathbb{Z}$, so 
+  $\left( \frac{(m+1)}{2} +   \sum_{i = 1}^m k_i \right) \in \mathbb{Z}$ and 
+  \[
+    m \mathbin{\Big|} \sum_{i = 1}^m r_i
+  \]
+  for any complete residue system $r_1, r_2, \ldots, r_m$
+  modulo $m$.
+
+  Now we aim to prove the analogous result for a reduce residue system
+  given any $m > 2$. 
+  Let $U_m$ represent the group of units modulo $m$ whose elements are
+  less than $m$. 
+  A unit is an element of $\mathbb{Z}_m$ which has an inverse
+  under multiplication. 
+  By Theorem 2.9, an element $a \in Z_m$ will have an inverse 
+  if $\gcd(a, m) = 1$.
+  Clearly, $U_m$ a reduced residue system.
+
+  First we aim to show that if $a \in U_m$, then $m-a \in U_m$.
+  Assume $\gcd(a, m) = 1$. 
+  By Theorem 1.9, $\gcd(a, m) = \gcd(-a, m) = \gcd(-a + mx, m )$ for any 
+  $x \in \mathbb{Z}$. 
+  Choose $x = 1$. 
+  Thus, 
+  \[
+    1 = \gcd(a, m) = \gcd(m-a, m), 
+  \]
+  so $a \in U_m$ if and only if $m-a \in U_m$.
+  (Note that the sum of these two numbers, $a$ and 
+  $m -a$, is equal to $m$.)
+
+  Next we aim to show that there is no such element
+  $a' \in \mathbb{Z}$ where $a' = m - a'$ and 
+  $\gcd(m, a') = 1$.
+  If $a' = m - a'$, then $a' = \frac{m}{2}$.
+  If $m$ is odd, no such number exists, so we 
+  assume that $m$ is even. 
+  Thus, $\frac{m}{2} \in \mathbb{N}$.
+  Clearly,
+  \[
+    \gcd(a', m) 
+    = \gcd \left( \frac{m}{2}, m \right) 
+    = \frac{m}{2}.
+  \]
+  We see that $\frac{m}{2} = 1$ only when $m = 2$.
+  For all other positive numbers, no such $a'$ exists.
+  Thus, for every $a \in U_m$, where $m > 2$, there will be a 
+  $b\in U_m$ such that $a \neq b$ and $a + b = m$.
+  This also implies that $|U_m|$ is even for $m > 2$.
+
+  Going on we will show that the reduced residue system
+  $r_1, r_2, \ldots, r_s$, for $s \in \mathbb{N}$ where
+  $r_i < m$ for $1 \leq i \leq s$ the elements sum 
+  to a number divisible by $m$ if $m > 2$.
+  Suppose $m > 2$.
+  For a given $r_i \in U_m$, we have shown that there will
+  be another $r_j \in U_m$, where $i \neq j$ and 
+  $r_i + r_j = m$.
+  Noting that $s = |U_m|$, we see that
+  \begin{align*}
+    \sum_{i=1}^s r_i &= \frac{s}{2} m,
+  \end{align*} 
+  where $\frac{s}{2} \in \mathbb{N}$ because the cardinality
+  of $U_m$ is even.
+  Therefore, 
+  \[
+    m \mid \sum_{i=1}^s r_i.
+  \]
+
+  Finally, we show that the above result
+  holds for any reduced residue system.
+  Consider the reduced residue system
+  $q_1, q_2, \ldots, q_{s'}$.
+  Since each reduced residue system has 
+  the same number of elements ($\phi(m)$), 
+  $s' = s$. 
+  Each element $q_i$ is congruent to a 
+  unique
+  $r_j$ modulo $m$ for $1 \leq i,j \leq m$.
+  Put another way, $q_i = r_j + km$ for some
+  $k \in \mathbb{Z}$.
+  Since the ordering of our set does not matter,
+  we will say $q_i \equiv r_i \mod m$ for each
+  $1 \leq i \leq m$.
+  Now we have
+  \begin{align*}
+    \sum_{i=1}^s q_i &= \sum_{i=1}^s (r_i + k_i m) & (k_i \in \mathbb{Z}) \\
+                     &= \sum_{i=1}^s r_i + \sum_{i=1}^s k_i m  \\
+                     &= \frac{s}{2} m + m \sum_{i=1}^s k_i  \\
+                     &= m \left( \frac{s}{2}  +  \sum_{i=1}^s k_i \right).
+  \end{align*}
+  Since $\frac{s}{2} \in \mathbb{Z}$ and $\sum_{i=1}^s k_i \in \mathbb{Z}$, 
+  $\left( \frac{s}{2}  +  \sum_{i=1}^s k_i \right)  \in \mathbb{Z}$.
+  By definition, $m \mid \sum_{i=1}^s q_i$.
+  Since the choice of a reduced residue system 
+  $q_1, q_2, \ldots, q_s$ 
+  was arbitrary, 
+  the condition that $m$ divides the sum of the elements of a 
+  reduced residue system modulo $m$ holds if $m > 2$. 
+
+  
+
+\vfill
+\newpage
+
+
+
+% PROBLEM 7
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.1.59) \\[4ex]
+\emph{Solution.} \\[2ex]
+  Let $p$ be prime.
+  Suppose $p \mid a^2 + 2b^2$ for $a,b \in \mathbb{Z}$. 
+  Since $p \not \, \mid a, b$; 
+  $\text{gcd}(p, a) = \text{gcd}(p, b) = 1$.
+  From Theorem 2.9, there exists $\bar{b} \in \mathbb{Z}_p$
+  such that $\bar{b} b = b \bar{b} \equiv 1 \mod p$.
+  We have
+  \begin{align*}
+    p &\mid a^2 + 2b^2 \\
+    a^2 + 2b^2 &\equiv 0 \mod p \\
+    a^2 &\equiv -2 b^2 \mod p \\
+    a^2 \bar{b}^2 &\equiv -2 b^2 \bar{b}^2 \mod p \\
+    \left( a \bar{b} \right)^2 &= -2 \left( b \bar{b} \right)^2 \\
+    \left( a \bar{b} \right)^2 &\equiv -2 \mod p.
+  \end{align*}
+  Thus, for $x = a \bar{b}$, 
+  \begin{align*}
+    x^2 &= \left( a \bar{b} \right)^2 \\
+        &\equiv -2 \mod p,
+  \end{align*}
+  so the congruence $x^2 \equiv -2 \mod p$ has a solution if
+  $p \mid a^2 + 2b^2$ and $p \not \, \mid a,b$.
+\vfill
+\newpage
+
+
+
+% PROBLEM 8
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.2.6) \\[4ex]
+\emph{Solution.} \\[2ex]
+  %For these solutions we use Theorem 2.3(1), which states
+  %that $ax \equiv ay \mod m$ if and only if 
+  %$x \equiv y \mod \frac{m}{\text{gcd}(a,m)}$.
+  We use Theorem 2.17 to determine the number of solutions.
+	\begin{enumerate}
+		\item[a.]
+      A solution exists to the congruence 
+      \[
+        15 x \equiv 25 \mod 35
+      \]
+      because $g = \text{gcd}(15, 35) = 5, and 5 \mid 25$.
+      Furthermore, there are $g = 5$ solutions modulus 35.
+		\item[b.]
+      No solution exists to the congruence
+      \[
+        15 x \equiv 24 \mod 35
+      \]
+      because $g = \text{gcd}(15, 35) = 5, and 5 \not \, \mid 24$.
+		\item[c.]
+      A solution exists to the congruence 
+      \[
+        15 x \equiv 0 \mod 35
+      \]
+      because $g = \text{gcd}(15, 35) = 5, and 5 \mid 0$.
+      Furthermore, there are $g = 5$ solutions modulus 35.
+	\end{enumerate}
+\vfill
+\newpage
+
+
+
+% PROBLEM 9
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.2.8) \\[4ex]
+\emph{Solution.} \\[2ex]
+   Let $p$ be an odd prime.
+   We have
+   \[
+     x^2 \equiv 1 \mod p^{\alpha}.
+   \]
+   From this we see that 
+   \begin{align}
+     x^2 - 1 &\equiv 0 \mod p^{\alpha} \notag \\
+     p^{\alpha} &\mid x^2 - 1 \notag \\
+     p^{\alpha} &\mid (x+1)(x-1).\label{eq:2.2.8}
+   \end{align}
+   This also implies
+   \[
+     p \mid (x+1)(x-1).
+   \]
+   By Theorem 1.15, $p$ divides at least one of the
+   factors on the right.
+   %By Theorem 1.10, if $p \not \, \mid (x+1)$, then
+   %$\text{gcd}(p, x+1) = 1$ so $p \mid (x-1)$.
+   %Put another way, $p$ divides at least one of the two 
+   %terms on the right. 
+
+   Next we aim to show that $p$ cannot divide both 
+   $x+1$ and $x-1$. 
+   If it did, then by Theorem 1.1(3), 
+   \begin{align*}
+     p &\mid 1 \cdot (x + 1) + (-1)\cdot (x - 1) \\
+     p &\mid 2.
+   \end{align*}
+   By Theorem 1.1(5), $p \mid 2$ implies $p \leq 2$. 
+   Because 2 is the smallest prime number, $p \leq 2$ implies
+   $p = 2$ since $p$ is prime. 
+   But we assumed $p$ is odd, which is a contradiction
+   since 2 is even.
+   Thus, $p$ cannot divide one of these terms.
+   Since the term that $p$ divides doesn't matter, we'll
+   say that $p$ divides $x + 1$ but not $x - 1$.
+
+   We know that $\text{gcd}(p, x-1) = 1$.
+   By repeated application of Theorem 1.8, we see that
+   $\gcd(p^{\alpha},x-1) = 1$.
+   By Theorem 1.10 and equation \ref{eq:2.2.8}, 
+   we see that $p^{\alpha} \mid (x+1)$.
+   Since the term we assumed that $p$ could divide was arbitrary,
+   this analysis also works if $p$ were to divide 
+   $x -1$ but not $x + 1$.
+\vfill
+\newpage
+
+
+
+% PROBLEM 10
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.3.4) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We are being asked to solve the system of linear congruences
+  \begin{align*}
+    x &\equiv 1 \mod 3 \\
+    x &\equiv 2 \mod 4 \\
+    x &\equiv 3 \mod 5.
+  \end{align*}
+  We start with the third congruence.
+  The solution is $x = 3 + 5b$, for $b \in \mathbb{Z}$.
+  Now we use this value in the second congruence to get
+  \begin{align*}
+    3 + 5b &\equiv 2 \mod 4 \\
+    5 b &\equiv -1 \mod 4 \\
+    b &\equiv -1 \mod 4 \\
+    b &\equiv 3 \mod 4,
+  \end{align*}
+  so $b = 3 + 4c$, for $c \in \mathbb{Z}$. 
+  We plug this in to get
+  \begin{align*}
+    x &= 3 + 5b  \\
+      &= 3 + 5(3 + 4c) \\
+      &= 3 + 15 + 20c \\
+      &= 18 + 20c
+  \end{align*}
+   Next, we use this for the first congruence
+  \begin{align*}
+    18 + 20c &\equiv 1 \mod 3 \\
+    2c &\equiv 1 \mod 3 \\
+    2c &\equiv 4 \mod 3 \\
+    c &\equiv 2 \mod 3 & \text{(because $\gcd(2, 3) = 1$, using Theorem 2.3(1))}
+  \end{align*}
+  so $c = 2 + 3d$, for $d \in \mathbb{Z}$.
+ 
+  Finally, we have
+  \begin{align*}
+    x &= 18 + 20c \\
+      &= 18 + 20(2 + 3d) \\
+      &= 18 + 40 + 60d \\
+      &= 58 + 60d,
+  \end{align*}
+  which is the solution to all three congruences.
+\vfill
+\newpage
+
+
+
+% PROBLEM 11
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.3.7) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to find whether or not the system of linear
+  congruences
+  \begin{align*}
+    5x &\equiv 1 \mod 6 \\
+    4x &\equiv 13 \mod 15
+  \end{align*}
+  has a solution, and if so what it is. 
+
+  Using Theorem 2.1(5), we see that
+  \[
+    5x \equiv 1 \mod 6
+  \]
+  implies
+  \begin{align}
+    5x &\equiv 1 \mod 3  \notag \\
+    2x &\equiv 4 \mod 3 \notag \\ 
+    x  &\equiv 2 \mod 3, 
+      & \text{(because $\gcd(2, 3) = 1$, using Theorem 2.3(1))} 
+        \label{eq:2.3.7.1}
+  \end{align}
+  and 
+  \[
+    4x \equiv 13 \mod 15
+  \]
+  implies 
+  \begin{align}
+    4x &\equiv 13 \mod 3 \notag \\
+    x &\equiv 1 \mod 3. \label{eq:2.3.7.2}
+  \end{align}
+  Clearly, equations \ref{eq:2.3.7.1} and \ref{eq:2.3.7.2} 
+  are incompatible because $1 \not \equiv 2 \mod 3$. 
+  Thus, the system of linear congruences is inconsistent
+  and no solutions exist. 
+\vfill
+\newpage
+
+
+
+% PROBLEM 12
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.3.14) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to solve the system of congruences
+  \begin{align*}
+    x^3 + 2x - 3 &= 0 \mod 9 \\
+    x^3 + 2x - 3 &= 0 \mod 5 \\
+    x^3 + 2x - 3 &= 0 \mod 45.
+  \end{align*}
+  It is worth noting that by Theorem 2.16, 
+  the first two congruences are implied by the third.
+
+  We solve for the first two congruences and 
+  use the Chinese remainder theorem to find solutions
+  in $\mathbb{Z}_{45}$.
+
+  Plugging in $x = 0, 1, 2, \ldots, 8$, we find that
+  the soltions to the first congruence are
+  $x = 1,2,6 \mod 9$.
+  Likewise, by plugging in $x = 0, 1, 2, 3, 4, 5$, 
+  we find that the solutions to the second congruence
+  are $x = 1, 3 \mod 5$.
+
+  Using Theorem 2.20, we see that $\gcd(5,9) = 1$ and
+  $45 = 5 \cdot 9$, so the number of solutions 
+  $N(45) = N(5)N(9) = 2 \cdot 3 = 6$ 
+  for $f(x) = x^3 + 2x - 3$.
+  All that needs to be done at this point is to use
+  the Chinese remainder theorem to show six solutions
+  in $\mathbb{Z}_{45}$.
+
+  I will calculate the first solution for brevity.
+  The algorithm for finding solutions is the same
+  for the remaining five. 
+
+  Let's find solutions to 
+  \begin{align*}
+    x &\equiv 1 \mod 9 \\
+    x &\equiv 1 \mod 5
+  \end{align*}
+  We start with $x = 1 + 9a$ for $a \in \mathbb{Z}$
+  and plug it into the second congruence
+  \begin{align*}
+    1 + 9a &\equiv 1 \mod 5 \\
+    9a &\equiv 0 \mod 5 \\
+    9a &\equiv 90 \mod 5 \\
+    a &\equiv 10 \mod 5  
+      & \text{(because $\gcd(9, 5) = 0$ using Theorem 2.3(1))} \\ 
+    a &\equiv 0 \mod 5, 
+  \end{align*}
+  so $a = 0 + 5b$. 
+  Plugging this into our first solution, we get
+  \begin{align*}
+    x &= 1 + 9a \\
+      &= 1 + 9(0 + 5b) \\
+      &= 1 + 45b,
+  \end{align*}
+  so $x \equiv 1 \mod 45$. 
+
+  Finding the remaining five solutions is similarly tedious.
+  The six solutions are 
+  \begin{align*}
+    x &\equiv 1 \mod 45 \\
+    x &\equiv 6 \mod 45 \\
+    x &\equiv 11 \mod 45 \\
+    x &\equiv 28 \mod 45 \\
+    x &\equiv 33 \mod 45 \\
+    x &\equiv 38 \mod 45
+  \end{align*}
+\vfill
+\newpage
+
+
+
+% PROBLEM 13
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.3.16) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to solve the congruence 
+  \[
+    x^3 - 9x^2 + 23x - 15 \equiv 0 \mod 503.
+  \]
+  We are given $503$ is prime and that
+  \[
+    x^3 - 9x^2 + 23x - 15 = (x-1)(x-3)(x-5).
+  \]
+
+  We see that 
+  \begin{align*}
+    x^3 - 9x^2 + 23x - 15 &\equiv 0 \mod 503 \\
+    503 &\mid x^3 - 9x^2 + 23x - 15 \\
+    503 &\mid (x-1)(x-3)(x-5).
+  \end{align*}
+  By Theorem 1.15, at least one of these terms is 
+  divisible by 503. 
+
+  From this we can find the following solutions
+  \begin{align*}
+    503 &\mid (x-1) 
+      & 503 &\mid (x-3) 
+      & 503 &\mid (x-5)\\ 
+    x -1 &\equiv 0 \mod 503 
+      & x -3 &\equiv 0 \mod 503 
+      & x -5 &\equiv 0 \mod 503 \\
+    x &\equiv 1 \mod 503
+      & x &\equiv 3 \mod 503 
+      & x &\equiv 5 \mod 503 
+  \end{align*}
+\vfill
+\newpage
+
+
+
+% PROBLEM 14
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.3.17) \\[4ex]
+\emph{Solution.} \\[2ex]
+  We aim to solve the congruence 
+  \[
+    x^3 - 9x^2 + 23x - 15 \equiv 0 \mod 143.
+  \]
+  We see that $143 = 11 \cdot 13$ and 
+  \begin{equation}
+    \label{eq:2.3.17.1}
+    x^3 - 9x^2 + 23x - 15 = (x-1)(x-3)(x-5).
+  \end{equation}
+
+  By Theorem 2.3(3), the first congruence
+  is equivalent to the system of congruences
+  \begin{align*}
+    x^3 - 9x^2 + 23x - 15 &\equiv 0 \mod 11 \\
+    x^3 - 9x^2 + 23x - 15 &\equiv 0 \mod 13.
+  \end{align*}
+
+  By using equation \ref{eq:2.3.17.1}, we see
+  that the solutions to the above congruences are
+  \begin{align*}
+    x &\equiv 1 \mod 11 & x &\equiv 1 \mod 13 \\
+    x &\equiv 3 \mod 11 & x &\equiv 3 \mod 13 \\
+    x &\equiv 5 \mod 11 & x &\equiv 5 \mod 13.
+  \end{align*}
+  
+  Now from Theorem 2.20, since $\gcd(11,13) = 1$
+  and $11 \cdot 13 = 143$, 
+  $N(143) = N(11)N(13) = 3 \cdot 3 = 9$ for 
+  $f(x) = x^3 - 9x^2 + 23x - 15$, so we expect
+  there to be 9 solutions to the original congruence.
+
+  We can find each solution by constructing 
+  9 pairs of linear congruences and finding the
+  solution with the Chinese Remainder Theorem.
+  
+  I will solve an arbitrary pair of linear congruences.
+  The remaining 8 are equally tedious.
+
+  Consider the following congruences
+  \begin{align*}
+    x &\equiv 3 \mod 11 \\
+    x &\equiv 5 \mod 13.
+  \end{align*}
+  The solution to the first congruence is 
+  $x = 3 + 11a$ for some $a \in \mathbb{Z}$.
+  Now we plug this into the second congruence
+  to get
+  \begin{align*}
+    3 + 11a &\equiv 5 \mod 13 \\
+    11a &\equiv 2 \mod 13 \\
+    -2a &\equiv 2 \mod 13 \\
+    2a &\equiv -2 \mod 13 \\
+    a &\equiv -1 \mod 13 & \text{(because $\gcd(2,13) = 1$ using Theorem 2.3(1))} \\ 
+    a &\equiv 12 \mod 13.
+  \end{align*}
+  so $a = 12 + 13b$, for $b \in \mathbb{Z}$.
+  Plugging this into $x$ we get
+  \begin{align*}
+    x &= 3 + 11a \\
+      &= 3 + 11(12 + 13b) \\
+      &= 3 + 132 + 143b \\
+      &= 135 + 143b,
+  \end{align*}
+  so $x \equiv 135 \mod 143$ is one solution.
+
+  The full set of solutions is
+  \begin{align*}
+    x &\equiv 1 \mod 143 \\
+    x &\equiv 3 \mod 143 \\
+    x &\equiv 5 \mod 143 \\
+    x &\equiv 14 \mod 143 \\
+    x &\equiv 16 \mod 143 \\
+    x &\equiv 27 \mod 143 \\
+    x &\equiv 122 \mod 143 \\
+    x &\equiv 133 \mod 143 \\
+    x &\equiv 135 \mod 143
+  \end{align*}
+
+\vfill
+\newpage
+
+
+
+% PROBLEM 15
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (2.3.20) \\[4ex]
+\emph{Solution.} \\[2ex]
+  For $m_1, m_2 \in \mathbb{Z}^+$ fixed, and 
+  $a_1, a_2 \in \mathbb{Z}$ arbitrary, we have
+  \begin{align*}
+    x &\equiv a_1 \mod m_1 \\
+    x &\equiv a_2 \mod m_2.
+  \end{align*}
+
+  Let us try to find a solution to the above
+  system of linear congruences.
+  We start with the general solution to the first
+  congruence:
+  $x = a_1 + m_1 \cdot k$, 
+  for $k \in \mathbb{Z}$.
+  Let $g = \gcd(m_1, m_2)$.
+  Next we plug that into the second congruence
+  \begin{align*}
+    a_1 + m_1 \cdot k &\equiv a_2 \mod m_2 \\
+    k \cdot m_1 &\equiv a_2 - a_1 \mod m_2 \\
+    k \frac{m_1}{g} &\equiv \frac{a_2 - a_1}{g} \mod \frac{m_2}{g} 
+      & \text{by Theorem 2.3(1)} \quad (*)\\
+    k \frac{m_1}{g} 
+      \overline{\left( \frac{m_1}{g} \right)} 
+      &\equiv 
+      \frac{a_2 - a_1}{g} 
+      \overline{\left( \frac{m_1}{g} \right)} 
+      \mod \frac{m_2}{g} & (**) \\
+    k &\equiv 
+      \frac{a_2 - a_1}{g} 
+      \overline{\left( \frac{m_1}{g} \right)} 
+      \mod \frac{m_2}{g},
+  \end{align*}
+  so $k = \frac{a_2 - a_1}{g}  
+          \overline{\left( \frac{m_1}{g} \right)}
+          + \frac{m_2}{g} \cdot o$, 
+  for $o \in \mathbb{Z}$.
+
+  We use (*) to note $a_2 - a_1$ must be divisible by
+  $g$, or $a_1 \equiv a_2 \mod g$. 
+  We use (**) to note that 
+  $\gcd \left( \frac{m_1}{g}, \frac{m_2}{g} \right) = 1$ by 
+  Theorem 1.7, so $\frac{m_1}{g}$ has a unique inverse in 
+  $\mathbb{Z}_{\frac{m_2}{g}}$ by Theorem 2.9, which we
+  denote as $\overline{\left( \frac{m_1}{g} \right)}$.
+
+  Each of the steps up to this point has been if and only
+  statements, so a solution to the system of linear
+  congruences 
+  \begin{align*}
+    x &\equiv a_1 \mod m_1 \\
+    x &\equiv a_2 \mod m_2 
+  \end{align*}
+  exists if and only if $a_1 \equiv a_2 \mod g$, for 
+  $g = \gcd(m_1, m_2)$. 
+
+  Now we can plug $k$ back into $x$ to get
+  \begin{align*}
+    x &= a_1 + m_1 \cdot k \\
+    x &= a_1 + m_1
+        \left(
+          \frac{a_2 - a_1}{g}  
+          \overline{\left( \frac{m_1}{g} \right)}
+          + \frac{m_2}{g} \cdot o
+        \right) \\
+    x &= a_1 
+        + m_1 
+          \frac{a_2 - a_1}{g}  
+          \overline{\left( \frac{m_1}{g} \right)}
+        + \frac{m_1 m_2}{g} \cdot o \\
+    x &= a_1 
+        + m_1 
+          \frac{a_2 - a_1}{g}  
+          \overline{\left( \frac{m_1}{g} \right)}
+          + \text{lcm}(m_1, m_2) \cdot o  & (***) \\
+    x &\equiv 
+        a_1 
+        + m_1 
+          \frac{a_2 - a_1}{g}  
+          \overline{\left( \frac{m_1}{g} \right)}
+        \mod \text{lcm}(m_1, m_2),
+  \end{align*}
+  where (***) is using Theorem 1.13, which states that 
+  \begin{align*}
+    \text{lcm}(m_1, m_2) \gcd(m_2, m_2) &= |m_1 m_2|  \\
+    \text{lcm}(m_1, m_2)  &= \frac{|m_1 m_2|}{\gcd(m_1, m_2)}  \\
+    \text{lcm}(m_1, m_2)  &= \frac{m_1 m_2}{g} & \text{(since $m_1, m_2 \in \mathbb{Z}^+$)}
+  \end{align*}
+  Clearly, if a solution to our original set of linear congruences
+  exists, the solution will be a single congruence class
+  (recall that inverses are unique in $\mathbb{Z}_n$ if they exist) 
+  modulo $\text{lcm}(m_1, m_2)$. 
+  Thus, the solution is unique 
+  modulo $\text{lcm}(m_1, m_2)$. 
+\vfill
+\end{document}

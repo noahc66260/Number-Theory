@@ -1,0 +1,1107 @@
+\documentclass[12 pt]{amsart}
+
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{ulem}
+
+\begin{document}
+\normalem % because ulem changes \emph
+\allowdisplaybreaks
+\title
+[Problem Set 6]
+{Problem Set 6 \\
+MATH 115 \\
+Number Theory \\
+Professor Paul Vojta}
+
+\author{Noah Ruderman}
+
+\date{ August 4, 2014}
+
+\maketitle
+\begin{center}
+	Problems 3.7.1, 3.7.2, 3.7.3, 3.7.5, 4.1.2, 4.1.4, 4.1.6, 4.1.9, 4.2.2, 4.2.5, 4.2.6, 4.2.12, 4.2.16, 4.3.1, and 4.3.5 
+	from \emph{An Introduction to The Theory of Numbers}, 
+	$5^{\text{th}}$ edition,
+	by Ivan Niven, Herbert S. Zuckerman, and Hugh L. Montgomery 
+\end{center}
+
+% PROBLEM 1
+\newpage
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (3.7.1) \\[4ex]
+  Let $f(x,y) = ax^2 + bxy + cy^2$ be a reduced positive definite form.
+  Show that all representations of $a$ by $f$ are proper. 
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  By theorem 3.24, $a$ is the smallest number we can properly represent
+  by $f$.
+  For the sake of contradiction, suppose that there was an improper
+  representation of $a$ by $x_0, y_0$.
+  Let $g = \gcd(x_0, y_0)$. 
+  Since the representation is improper, $g > 1$.
+  We see that
+  \begin{align*}
+    f \left( \frac{x_0}{g}, \frac{y_0}{g} \right) 
+    &= 
+      a \left( \frac{x_0}{g} \right)^2 + 
+      b \left( \frac{x_0}{g} \cdot \frac{y_0}{g} \right) + 
+      c \left( \frac{y_0}{g} \right)^2 \\
+    &= 
+      \frac{1}{g^2} \cdot a \left( x_0 \right)^2 + 
+      \frac{1}{g^2} \cdot b \left( x_0 \cdot y_0 \right) + 
+      \frac{1}{g^2} \cdot c \left( y_0 \right)^2 \\
+    &=
+      \frac{1}{g^2} \left( ax_0^2 + bx_0y_0 + cy_0^2 \right) \\
+    &= 
+      \frac{1}{g^2} f(x_0, y_0) \\
+    &=
+      \frac{a}{g^2}.
+  \end{align*}
+  By theorem 1.7, $\gcd\left( \frac{x_0}{g}, \frac{y_0}{g} \right) = 1$.
+  So $\frac{a}{g^2}$ is properly represented by $f$ and 
+  $\frac{a}{g^2} < a$ given that $g > 1$.
+  We've arrived at a contradiction.
+  Thus, there cannot be a improper representation of $a$.
+  Since $a$ is represented by $f$, it can only be represented properly.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 2
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (3.7.2) \\[4ex]
+  Let $f(x,y) = ax^2 + bxy + cy^2$ be a reduced positive definite form.
+  Show that improper represents of $c$ may exist.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Suppose $c = r^2 a$ for $r \in \mathbb{Z}$ and $r > 1$.
+  If $f(x_0, y_0) = a$, then $\gcd(x_0, y_0) = 1$ because all representations
+  of $a$ by $f$ are proper.
+  By theorem 1.6, we see that $\gcd(rx_0, ry_0) = r$.
+  But $f(rx_0, ry_0) = r^2 a = c$.
+  Thus, improper representations of $c$ may exist when $c = r^2 a$ for some
+  integer $r$ greater than 1.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 3
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (3.7.3) \\[4ex]
+  Show that any positive definite binary quadratic form of discriminant
+  $-3$ is equivalent to $f(x,y) = x^2 + xy + y^2$.
+  Show that a positive integer $n$ is properly represented by $f$
+  if and only if $n$ is of the form 
+  $n = 3^{\alpha} \prod p^{\beta}$,
+  where $\alpha = 0$ or $1$ and all the primes $p$ are of the form
+  $3k + 1$. 
+  \sout{
+  Show that for $n$ of the form, $r_f(n) = 6 \cdot 2^s$, where $s$
+  is the number of distince primes $p \equiv 1 \mod 3$ that divide $n$.
+  }.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  First we show that positive definite binary quadratic form of discriminant
+  $-3$ is equivlent to $f(x,y) = x^2 + xy + y^2$.
+  By theorem 3.18, any binary quadratic form is equivalent to 
+  some reduced binary quadratic form.
+  By theorem 3.17, two equivalent binary quadratic forms
+  will have the same discriminant. 
+  By theorem 3.19, a reduced positive definite binary quadratic form is subject to the
+  restriction $0 < a \leq \sqrt{-d/3}$.
+
+  Let $h(x,y) = ax^2 + bxy + cy^2$.
+  Putting this together, there is some reduced binary quadratic 
+  form equivalent to $h$, which we will call
+  $g(x,y) = Ax^2 + Bxy + Cy^2$, such that 
+  $d = b^2 - 4ac = B^2 - 4AC = D$ and 
+  $0 < A \leq \sqrt{-D/3} = \sqrt{3/3} = 1$.
+  Since $g$ is reduced, we see that $-|A| < B \leq |A| < |C|$
+  or $0 \leq B \leq |A| < |C|$.
+  Either way, we see that $B$ can only take on the values of 0 or 1.
+  If $B = 0$, then $D = -4AC \equiv 0 \not \equiv -3 = D \mod 4$,
+  so $B \neq 0$.
+  If $A = B = 1$, then 
+  \begin{align*}
+    -3 &= D \\
+    -3   &= B^2 - 4AC \\
+    -3   &= 1^2 - 4 \cdot 1 \cdot C \\
+    -4 &=  -4C \\
+    1 &= C.
+  \end{align*}
+  We see that $A = B = C$ so 
+  $g(x,y) = x^2 + xy + y^2$.
+  Thus, $h$ is equivalent to $x^2 + xy + y^2$.
+
+  Next we show that
+  a positive integer $n$ is properly represented by $f$
+  if and only if $n$ is of the form 
+  $n = 3^{\alpha} \prod p^{\beta}$,
+  where $\alpha = 0$ or $1$ and all the primes $p$ are of the form
+  $3k + 1$. 
+
+  Theorem 3.13 tells us that $f$ will properly represent $n$
+  if the congruence
+  \begin{equation}
+    \label{eq:3.7.3.1}
+    x^2 \equiv d \mod 4 |n|
+  \end{equation}
+  has a solution.
+  Given $d = -3$ and $n > 0$ we may rewrite equation \ref{eq:3.7.3.1}
+  as 
+  \begin{equation}
+    \label{eq:3.7.3.2}
+    x^2 \equiv -3 \mod 4 n.
+  \end{equation}
+  First we show that $f$ cannot properly represent an even number.
+  Suppose $\gcd(x_0, y_0) = 1$.
+  Then $2 \mid x_0$ or $2 \mid y_0$ or neither.
+  Suppose that $x_0$ is even and $y_0$ is odd.
+  Then $f(x_0, y_0) = x_0^2 + x_0 y_0 + y_0^2$, which is 
+  odd because $x_0^2 + x_0 y_0$ is even but $y_0^2$ is odd.
+  The case where $x_0$ is even and $y_0$ is odd makes
+  $f(x_0, y_0)$ odd by a symmetrical argument.
+  So $2$ does not appear in the prime factorization of $n$.
+  
+  Let us write $n = 3^{\alpha}\prod_{p \mid n} p^{\beta}$
+  as permitted by the fundamental theorem of arithmetic, where $p > 3$
+  and $\alpha \in \mathbb{N}$.
+  By the chinese remainder theorem, 
+  equation \ref{eq:3.7.3.2} can be rewritten as 
+  \begin{equation}
+    \label{eq:3.7.3.3}
+    x^2 \equiv -3 \mod 4 \cdot 3^\alpha 
+        \cdot \prod_{\substack{p \mid n\\p > 3}} p^{\beta}.
+      \end{equation}
+  It is clear that $\gcd \left( 4, 3^{\alpha}, \prod p^{\beta} \right) = 1$.
+  By the chinese remainder theorem, we see that a solution will exist to 
+  equation \ref{eq:3.7.3.3} if and only if solutions exist to the following
+  three congruences:
+  \begin{align}
+    \label{eq:3.7.3.4}
+    x^2 &\equiv -3 \mod 4 \\
+    \label{eq:3.7.3.5}
+    x^2 &\equiv -3 \mod 3^\alpha  \\
+    \label{eq:3.7.3.6}
+    x^2 &\equiv -3 \mod \prod_{\substack{p \mid n\\p > 3}} p^{\beta}.
+  \end{align}
+  
+  We see that equation \ref{eq:3.7.3.4} is true because
+  $x^2 \equiv -3 \equiv 1 \mod 4$ and $1$ is a perfect square.
+
+  For equation \ref{eq:3.7.3.5} we will prove that the congruence
+  \begin{equation}
+    \label{eq:3.7.3.7}
+    x^2 \equiv -p \mod p^{\alpha}
+  \end{equation}
+  where $p$ is prime only has solutions for $\alpha = 0$ or $1$.
+
+  First we examine the case where $\alpha = 0$
+  so $p^{\alpha} = p^0 = 1$.
+  Since every integer is divisible by 1, 
+  $1 \mid (x^2 + p)$ so $x^2 \equiv -p \mod 1$.
+
+  Now we consider the case where $\alpha = 1$.
+  We see that $x^2 \equiv -p \equiv 0 \mod p$ is trivially true.
+
+  Next we consider the case where $\alpha > 1$.
+  To start, we note that 
+  $x^2 \equiv -p \mod p^{\alpha}$ if and only if 
+  $x^2 = -p + np^{\alpha}$ for $n \in \mathbb{Z}$
+  where $n \neq 0$ because $p$ is not a perfect square.
+  We see that $-p + np^{\alpha} = p (-1 + np^{\alpha - 1})$.
+  By the fundamental theorem of arithmetic, we see that any 
+  number squared will have even exponents among its prime factors.
+  Thus, $(-1 + np^{\alpha - 1})$ must contain $p$ in its prime
+  factorization and the exponent must be odd, so 
+  $p \mid (-1 + np^{\alpha - 1})$.
+  But $p \mid np^{\alpha - 1}$, so if 
+  $p \mid (-1 + np^{\alpha - 1})$ then 
+  \begin{align*}
+    p &\mid -(-1 + np^{\alpha - 1}) +  np^{\alpha - 1} \\
+    p &\mid 1. 
+  \end{align*}
+  Since no prime number can divide 1, no solution to 
+  equation \ref{eq:3.7.3.7} can exist for $\alpha > 1$.
+  Setting $p = 3$ in equation  \ref{eq:3.7.3.7} gives us 
+  equation \ref{eq:3.7.3.5}.
+  Thus, $\alpha = 0$ or $\alpha = 1$.
+
+  We use Legendre symbols to find the solutions to 
+  equation \ref{eq:3.7.3.6}.
+  By the chinese remainder theorem, 
+  equation \ref{eq:3.7.3.6} will 
+  have a solution if and only if the congruence
+  \begin{align*}
+    x^2 \equiv -3 \mod p^{\beta} 
+  \end{align*}
+  is true for each $p \mid n$ such that 
+  $p^{\beta} \parallel n$ and $p > 3$.
+  We see that each congruence of this form requires that 
+  \begin{align*}
+    x^2 \equiv -3 \mod p
+  \end{align*}
+  is true as well.
+  If this has a solution, then if $f(x) = x^2 + 3$ has a solution
+  $f(x_0) = 0$, and $f'(x_0) = 2x_0 \not \equiv 0 \mod p$, Hansel's
+  lemma tells us that congruence $x^2 \equiv -3 \mod p^{\beta}$
+  will have a solution.
+  Let us call $p = \gamma$.
+  We have 
+  \begin{align*}
+    \left( \frac{-3}{\gamma} \right)
+    &=
+      \left( \frac{-1}{\gamma} \right)
+      \left( \frac{3}{\gamma} \right).
+  \end{align*}
+  We have two cases
+  \begin{enumerate}
+  \item $\gamma \equiv 1 \mod 4$: \\
+    We see that 
+    \begin{align*}
+      \left( \frac{-1}{\gamma} \right) &= (-1)^{\frac{\gamma - 1}{2}} \\
+                                       &= 1,
+    \end{align*}
+    Furthermore, we see that 
+    \begin{align*}
+      \left( \frac{3}{\gamma} \right) &= \left( \frac{\gamma}{3} \right) 
+                                          & \text{by quadratic reciprocity} \\
+                                      &= \begin{cases} 
+                                          \phantom{-}1 & \gamma \equiv 1 \mod 3 \\ 
+                                          -1 & \gamma \equiv 2 \mod 3 
+                                         \end{cases}
+    \end{align*}
+    Putting this together, we see that 
+    \begin{align*}
+      \left( \frac{-1}{\gamma} \right)
+      \left( \frac{3}{\gamma} \right).
+      &= 
+        \begin{cases} 
+        \phantom{-}1 & \gamma \equiv 1 \mod 3 \\ 
+        -1 & \gamma \equiv 2 \mod 3 
+        \end{cases}
+    \end{align*}
+  \item $\gamma \equiv 3 \mod 4$: \\
+    We see that 
+    \begin{align*}
+      \left( \frac{-1}{\gamma} \right) &= (-1)^{\frac{\gamma - 1}{2}} \\
+                                       &= -1,
+    \end{align*}
+    Furthermore, we see that 
+    \begin{align*}
+      \left( \frac{3}{\gamma} \right) &= -\left( \frac{\gamma}{3} \right) 
+                                          & \text{by quadratic reciprocity} \\
+                                      &= \begin{cases} 
+                                          -1 & \gamma \equiv 1 \mod 3 \\ 
+                                          \phantom{-}1 & \gamma \equiv 2 \mod 3 
+                                         \end{cases}
+    \end{align*}
+    Putting this together, we see that 
+    \begin{align*}
+      \left( \frac{-1}{\gamma} \right)
+      \left( \frac{3}{\gamma} \right).
+      &= 
+        \begin{cases} 
+        \phantom{-}1 & \gamma \equiv 1 \mod 3 \\ 
+        -1 & \gamma \equiv 2 \mod 3 
+        \end{cases}
+    \end{align*}
+  \end{enumerate}
+  In each case, we see that 
+  $\left( \frac{-3}{\gamma} \right) = 1$ when $\gamma \equiv 1 \mod 3$
+  and $\left( \frac{-3}{\gamma} \right) = -1$ otherwise.
+  Thus, solutions will exist to 
+  $x^2 \equiv -3 \mod p^{\beta}$ if and only if 
+  $p \equiv 1 \mod 3$.
+%
+%  Here we refer to the definition of the Jacobi symbol
+%  as the product of Legendre symbols to get
+%  \begin{align*}
+%    \left( \frac{-3}{\gamma} \right) 
+%    &=\left( \frac{-3}{\prod_{\substack{p \mid n \\ p > 3}} p^{\beta}} \right)  \\
+%    &= \prod_{\substack{p \mid n \\ p > 3}} \left( \frac{-3}{p^{\beta}} \right) 
+%  \end{align*}
+%  By invoking the Chinese remainder theorem again, we see that 
+%  \begin{align*}
+%    x^2 &\equiv -3 \mod \prod_{\substack{p \mid n\\p > 3}} p^{\beta}
+%  \end{align*}
+%  will have a solution if and only if 
+%  the set of congruences
+%  \begin{align*}
+%    x^2 &\equiv -3 \mod p_i^{\beta_i}
+%  \end{align*}
+%  for $p_i^{\beta_i} || \prod_{\substack{p \mid n\\p > 3}} p^{\beta}$.
+%  If $\beta_i$ is even and positive, from theorem 3.6(3), we see that 
+%  \begin{align*}
+%    \left( \frac{P}{p^{\beta_i}} \right) 
+%    &= 
+%    \left( \frac{P}{p^{2} p^{\beta_i - 2}} \right)  \\
+%    &= 
+%    \left( \frac{P}{p^{2}} \right)  
+%    \left( \frac{P}{p^{\beta_i - 2}} \right)  \\
+%    &=
+%    \left( \frac{P}{p^{\beta_i - 2}} \right).
+%  \end{align*}
+%  We can repeat this until we find that 
+%    $\left( \frac{P}{p^{\beta_i}} \right) = 1$
+%    or 
+%    $\left( \frac{P}{p^{\beta_i}} \right)
+%    =
+%    \left( \frac{P}{p} \right)$.
+%  If $\beta_i$ is odd then 
+%  $\left( \frac{P}{p^{\beta_i}} \right) = 1$
+%  if and only if 
+%  $p \equiv 1 \mod 3$.
+%  So the congruence
+%  $x^2 \equiv -3 \mod p_i^{\beta_i}$
+%  will only have a solution when 
+%  $p \equiv 1 \mod 3$.
+%
+  If $p \equiv 1 \mod 3$ for every 
+  $p \mid n$ such that $p > 3$,
+  then we can use the chinese remainder theorem to 
+  find a solution to 
+  equation \ref{eq:3.7.3.6}.
+
+  Putting this all together, we see thata
+  $n$ will be properly represented by $f$ 
+  if and only if
+  equation \ref{eq:3.7.3.2}
+  is true.
+  We showed that $2 \not \, \mid n$ and that 
+  $3 || n$ or $3 \not \, \mid n$, 
+  and
+  equation \ref{eq:3.7.3.2}
+  can be rewritten as
+  equation \ref{eq:3.7.3.3}.
+  We showed that 
+  equation \ref{eq:3.7.3.3} 
+  is true if and only if 
+  equations \ref{eq:3.7.3.4}, \ref{eq:3.7.3.5}, and \ref{eq:3.7.3.6}
+  are true.
+  We showed that 
+  equations \ref{eq:3.7.3.4} is true unconditionally and that
+  equation \ref{eq:3.7.3.5} is true for $\alpha = 0$ or 1.
+  Furthermore, we showed that 
+  equation \ref{eq:3.7.3.6} is true if 
+  every prime dividing $n$ greater than 3 is congruent to 1 modulo 3.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 4
+%\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (3.7.5) \\[4ex]
+  Show that for any given $d < 0$, the primitive
+  positive definite quadratic forms of 
+  discriminant $d$ all have the same number of automorphs.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  From theorem 3.26, we see that the number of automorphs can
+  only be 2, 4, or 6.
+  We denote the number of automorphs of a binary quadratic 
+  form, $f$, by $w(f)$.
+  Let $f(x,y) = ax^2 + bxy + cy^2$ be a 
+  primitive positive definite binary quadratic form of discriminant
+  $d$.
+  We consider two cases
+  \begin{enumerate}
+    \item $w(f) = 4$: \\
+      Theorem 3.26 tells us that $a = c$ and $b = 0$.
+      We require that $\gcd(a,b,c) = 1$ because $f$ is primitive.
+      We see that this requires $a = c = 1$.
+      From this we see that 
+      $d = b^2 - 4ac = 0^2 - 4\cdot 1 \cdot 1 = -4$.
+      Since $d$ is not a perfect square, we can use theorem 3.19
+      to find the reduced binary quadratic forms of those with
+      discriminant $d = -4$.
+
+      By theorem 3.18, there will be at least one reduced 
+      binary quadratic form with discriminant $d$
+      for every equivalence class.
+      Let $g(x,y) = Ax^2 + Bxy + Cy^2$ be a positive definite reduced binary 
+      quadratic form with discriminant $D = d = -4$.
+      We see that $0 < A \leq \sqrt{-d/3} = \sqrt{4/3} < \sqrt{12/3} = \sqrt{4} = 2$.
+      So $A = 1$.
+      Since $-1 = -|A| < B \leq |A| = 1 < C$ or 
+      $0 \leq B \leq |A| = |C|$, we see that $B = 0$ or $B = 1$.
+      Since $D \equiv 0 \mod 4$, we see that $B \neq 1$ because then
+      $D = B^2 - 4AC = 1^2 - 4AC \not \equiv 0 \mod 4$.
+      Thus, $B = 0$.
+      Now we can solve for $C$ using $D = -4$.
+      \begin{align*}
+        D &= B^2 - 4AC \\
+        -4 &= 0^2 - 4 \cdot 1 \cdot C \\
+        -4 &= -4 \cdot C \\
+        1 &= C.
+      \end{align*}
+      Thus $A = C = 1$ and $B = 0$.
+      So we see that there is only one reduced positive definite binary
+      quadratic form with discriminant $d = -4$. 
+      Thus, there is only one equivalence class so all 
+      binary quadratic forms of discriminant $d = -4$ are
+      equivalent.
+
+      By theorem 3.26, equivalent positive definite binary quadratic
+      forms have the same number of automorphs.
+      Thus, every primitive positive definite binary quadratic form
+      of discriminant $d = -4$
+      is equivalent to $g$, which has 4 automorphs.
+    \item $w(f) = 6$: \\
+      By theorem 3.26, $a = b = c$.
+      Given that $\gcd(a,b,c) = 1$ because $f$ is primitive, 
+      we see that $a = b = c = 1$.
+      From this we see that 
+      $d = b^2 - 4ac = 1^2 - 4\cdot 1 \cdot 1 = -3$.
+      Since $d$ is not a perfect square, we can use theorem 3.19
+      to find the reduced binary quadratic forms of those with
+      discriminant $d = -3$.
+
+      By theorem 3.18, there will be at least one reduced 
+      binary quadratic form with discriminant $d$
+      for every equivalence class.
+      Let $g(x,y) = Ax^2 + Bxy + Cy^2$ be a positive definite reduced binary 
+      quadratic form with discriminant $D = d = -3$.
+      We see that $0 < A \leq \sqrt{-d/3} = \sqrt{1} = 1$.
+      Since $-1 = -|A| < B \leq |A| = 1 < C$ or 
+      $0 \leq B \leq |A| = |C|$, we see that $B = 0$ or $B = 1$.
+      Since $D \equiv 1 \mod 4$, $B \neq 0$ because then
+      $D = B^2 - 4AC = 0^2 - 4AC \equiv 0 \mod 4$.
+      Thus, $B = 1$.
+      Now we can solve for $C$ using $D = -3$.
+      \begin{align*}
+        D &= B^2 - 4AC \\
+        -3 &= 1^2 - 4 \cdot 1 \cdot C \\
+        -4 &= -4 \cdot C \\
+        1 &= C.
+      \end{align*}
+      So we see that there is only one reduced positive definite binary
+      quadratic form with discriminant $d = -3$. 
+      Thus, there is only one equivalence class so all 
+      binary quadratic forms of discriminant $d = -3$ are
+      equivalent.
+
+      By theorem 3.26, equivalent positive definite binary quadratic
+      forms have the same number of automorphs.
+      Thus, every primitive positive definite binary quadratic form
+      of discrimiant $d = -3$
+      is equivalent to $g$, which has 6 automorphs.
+  \end{enumerate}
+  So far we have showed that if $d = -3$ or $d = -4$, then $f$ will
+  be equivalent to a reduced positive definite binary quadratic form
+  with a known number of automorphs. 
+  Since the number of automorphs of two equivalent binary quadratic
+  forms are equal, we see that $w(f) = 4$ if and only if $d = -4$ and 
+  $w(f) = 6$ if and only if $d = -3$.
+  For all other primitive binary quadratic forms of discriminant
+  $d \neq -3$ and $d \neq -4$, the number of automorphs must be 2
+  because $f$ cannot be equivalent to the only two known reduced
+  binary quadratic forms with a number of automorphs greater than 2
+  because equal discriminants is a necessary condition for 
+  equivalence.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 5
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.1.2) \\[4ex]
+  If 100! were written out in the orginary decimal notation without the
+  factorial sign, how many zeros would there be in a row at the right end?
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  The decimal representation of a number $n$ will end in a 0 if 
+  $10 \mid n$.
+  Furthermore, the number of 0's that trail the decimal representation
+  of $n$ is equal to the highest power of 10 that divides $n$.
+  But 10 can be factored as $2 \cdot 5$, so the highest power of 
+  10 that divides $n$ is the minimum of the highest power that
+  2 can divide $n$ and the highest power of 5 that can divide $n$.
+
+  By theorem 4.2, we see that $2^{e_1} \parallel 100!$ where
+  \begin{align*}
+    e_1 &= \sum_{i = 1}^{\infty} \left[ \frac{100}{2^i} \right] \\
+      &= \sum_{i = 1}^{6} \left[ \frac{100}{2^i} \right] \\
+      &= \left[ \frac{100}{2^1} \right]
+         + \left[ \frac{100}{2^2} \right]
+         + \left[ \frac{100}{2^3} \right]
+         + \left[ \frac{100}{2^4} \right]
+         + \left[ \frac{100}{2^5} \right]
+         + \left[ \frac{100}{2^6} \right] \\
+      &= 50 
+         + 25
+         + 12
+         + 6
+         + 3
+         + 1 \\
+      &= 97
+  \end{align*}
+  Likewise, we see that 
+  $5^{e_2} \parallel 100!$ where
+  \begin{align*}
+    e_2 &= \sum_{i = 1}^{\infty} \left[ \frac{100}{5^i} \right] \\
+      &= \sum_{i = 1}^{2} \left[ \frac{100}{5^i} \right] \\
+      &= \left[ \frac{100}{5^1} \right]
+         + \left[ \frac{100}{5^2} \right] \\
+      &= 20
+         + 4 \\
+      &= 24
+  \end{align*}
+  We see that $\text{min}(97, 24) = 24$, so 
+  $10^{24} \parallel 100!$, so the decimal representation of 
+  100! has 24 trailing 0's. 
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 6
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.1.4) \\[4ex]
+  Given that $[x + y] = [x] + [y]$ and 
+  $[-x - y] = [-x] + [-y]$, prove that $x$ or $y$ is an integer.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Let $x = u + v$, where $u \in \mathbb{Z}$ and $0 \leq v < 1$,
+  and let $y = r + s$, where $r \in \mathbb{Z}$ and $0 \leq s < 1$.
+  We see that 
+  \begin{align*}
+    [x] + [y] &= u + r  \\
+              &\leq [u + v + r + s] = [x + y] \\
+              &= [u + r] + [v + s] \\
+              &= (u + r) + [v + s].
+  \end{align*}
+  We are given $[x] + [y] = [x+y]$ so we see that $[v+s] = 0$, which
+  is true when $0 \leq v + s < 1$.
+
+  We see that $-x = -u - v = -u - 1 + (1 - v)$
+  and that $-y = -r - s = -r - 1 + (1 - s)$
+  where $0 < 1-v, 1-s \leq 1$.
+  Suppose for the sake of contradiction that 
+  $v \neq 0$ and $r \neq 0$.
+  We see that 
+  \begin{align*}
+  [-x] + [-y] &= -u - 1 - r - 1 \\
+              &\leq [-u - 1 + (1 - v) - r - 1 + (1 - s)] = [-x - y]\\
+              &= [-u -1 - r - 1] + [1 - v + 1 - s].
+  \end{align*}
+  Here we see that $[-x] + [-y] = [-x - y]$ requires $[1 - v + 1 - s] = 0$.
+  This is true when
+  \begin{align*}
+    0 &\leq 1 - v + 1 - s < 1 \\
+    0 &\leq 2 - v - s < 1 \\
+    -2 &\leq -v - s < -1 \\
+    2 &\geq v + s > 1.
+  \end{align*}
+  This is a contradiction, as the quantity $v+s$ cannot be both
+  strictly greater than and stricly less than 1.
+  Thus, $v = 0$ or $r = 0$. 
+  If $v = 0$, then $x = u \in \mathbb{Z}$ and $x$ is an integer.
+  Likewise, if $s = 0$, then $y = s \in \mathbb{Z}$ and $y$ is an integer.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 7
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.1.6) \\[4ex]
+  For any real number $x$ prove that 
+  $[x] + \left[x + \frac{1}{2} \right] = [2x]$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Let $x = u + v$, where $u \in \mathbb{Z}$ and $0 \leq v < 1$.
+  Let $f(x) = [x] + \left[x + \frac{1}{2}\right]$ and $g(x) = [2x]$.
+  We see that 
+  \begin{align*}
+    f(x) &=  [x] + \left[x + \frac{1}{2}\right] \\
+         &=  [u + v] + \left[u + v + \frac{1}{2}\right] \\
+         &=  u + u + \left[ v + \frac{1}{2}\right] \\
+         &= \begin{cases} 2u & v < \frac{1}{2} \\
+                          2u + 1 & v \geq \frac{1}{2} 
+            \end{cases}
+  \end{align*}
+  We also see that 
+  \begin{align*}
+    g(x) &=  [2x]\\ 
+         &= [2u + 2v] \\
+         &= 2u + [2v] \\
+         &= \begin{cases} 2u & v < \frac{1}{2} \\
+                          2u + 1 & v \geq \frac{1}{2} 
+            \end{cases}
+  \end{align*}
+  We see that $f \equiv g$, or $f$ is identically equal to $g$.
+  Thus, 
+  $[x] + \left[x + \frac{1}{2} \right] = [2x]$.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 8
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.1.9) \\[4ex]
+  Prove that $(2n)!/(n!)^2$ is even if $n$ is a positive integer.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  First we aim to show that the quantity $(2n)!/(n!)^2$ is a positive integer.
+  Using theorem 4.2, we see that $(2n)!/(n!)^2 \in \mathbb{Z}$ if
+  in the prime factorization of the numerator and denominator,
+  the numerator contains the same prime factors as in the denominator
+  with equal or larger exponents. 
+  It will be sufficient to show that for an arbitrary prime $p$, 
+  and exponents $e_1, e_2 \in \mathbb{N}$,
+  if $p^{e_1} \parallel (2n)!$ and $p^{e_2} \parallel (n!)^2$,
+  then $e_1 \geq e_2$.
+
+  Using theorem 4.2, we see that 
+  \begin{align*}
+    e_1 &= \sum_{i = 1}^{\infty} \left[ \frac{2n}{p^i} \right]
+  \end{align*}
+  and 
+  \begin{align*}
+    e_2 &= 2 \sum_{i = 1}^{\infty} \left[ \frac{n}{p^i} \right],
+  \end{align*}
+  where the coefficient 2 comes from the fact that squaring
+  a number doubles the value of each exponent in its prime factorization.
+
+  From theorem 4.1(4), we see that 
+  \begin{align*}
+    e_2 &=  2 \sum_{i = 1}^{\infty} \left[ \frac{n}{p^i} \right] \\
+        &= \sum_{i = 1}^{\infty} 
+            \left( 
+              \left[ \frac{n}{p^i} \right] 
+              + \left[ \frac{n}{p^i} \right] 
+            \right)\\
+        &\leq \sum_{i = 1}^{\infty}  
+                    \left[ \frac{n}{p^i} + \frac{n}{p^i} \right]  
+                    & \text{by theorem 4.1(4)}\\
+        &= \sum_{i = 1}^{\infty} \left[ \frac{2n}{p^i} \right] \\
+        &= e_1.
+  \end{align*}
+  Of course, the factorial is alwyas positive, to the the quantity
+  $(2n)!/(n!)^2$ will be positive.
+  This proves our first assertion: that $(2n)!/(n!)^2 \in \mathbb{Z}^+$
+
+  To show that $(2n)!/(n!)^2$ is even, we only need to show that if
+  $p = 2$, that $e_1 > e_2$. 
+  First we show that 
+  $\sum_{i = 1}^{\infty} \left[ \frac{n}{2^i} \right] < n$.
+  We see that 
+  \begin{align*}
+    \sum_{i = 1}^{\infty} \left[ \frac{n}{2^i} \right]
+    &=
+      \sum_{\substack{i = 1 \\ 2^i \leq n}} \left[ \frac{n}{2^i} \right]
+    + \sum_{\substack{i \\ 2^i > n}} \left[ \frac{n}{2^i} \right] \\
+    &=
+      \sum_{\substack{i = 1 \\ 2^i \leq n}} \left[ \frac{n}{2^i} \right] \\
+    &\leq
+      \sum_{\substack{i = 1\\ 2^i \leq n}} \frac{n}{2^i}
+      & \text{by theorem 4.1(1)}\\
+    &< 
+      \sum_{\substack{i = 1\\ 2^i \leq n}} \frac{n}{2^i}
+      + \sum_{\substack{i \\ 2^i > n}} \frac{n}{2^i} \\
+    &= 
+      \sum_{\substack{i = 1}} \frac{n}{2^i} \\
+    &= 
+      n \sum_{\substack{i = 1}} \frac{1}{2^i} \\ 
+    &= 
+      n.
+  \end{align*}
+  We can use this result to show
+  \begin{align*}
+    e_2  &=  2 \sum_{i = 1}^{\infty} \left[ \frac{n}{2^i} \right] \\
+         &=  \sum_{i = 1}^{\infty} \left[ \frac{n}{2^i} \right] 
+             + \sum_{i = 1}^{\infty} \left[ \frac{n}{2^i} \right] \\
+         &<  n + \sum_{i = 1}^{\infty} \left[ \frac{n}{2^i} \right] \\
+         &=  \left[ \frac{2n}{2^1} \right] 
+            + \sum_{i = 1}^{\infty} \left[ \frac{2n}{2^{i+1}} \right] \\
+         &=  \left[ \frac{2n}{2^1} \right] 
+            + \sum_{i = 2}^{\infty} \left[ \frac{2n}{2^{i}} \right] \\
+         &=  \sum_{i = 1}^{\infty} \left[ \frac{2n}{2^{i}} \right] \\ 
+         &= e_1.
+  \end{align*}
+
+  Since $e_1 > e_2$, we can always factor out a 2 from the numerator 
+  of the integer $(2n)!/(n!)^2$. 
+  
+  Since $(2n)!/(n!)^2$ is a positive integer for all $n \in \mathbb{N}$
+  and is always even, we are done.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 9
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.2.2) \\[4ex]
+  Find the smallest integer $x$ for which $d(x) = 6$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  From theorem 4.3, we see that
+  $d(x) = \prod_{p^{\alpha} \parallel x} (\alpha + 1)$.
+  It is easy to see that the only ways to factor 
+  6 are as $1 \cdot 6$ and $2 \cdot 3$.
+  Since $d$ is multiplicitive, we can $d(x) = 6$ in two cases:
+  $x$ has one prime factor to the fifth power; 
+  or $x$ has two prime factors, one to the first power and 
+  one to the second power.
+  We examine both cases:
+  \begin{enumerate}
+  \item $\omega(x) = 1$: \\
+    We see that $x = p_1^5$.
+    The smallest number of this form 
+    is $x = 2^5 = 32$.
+  \item $\omega(x) = 2$: \\
+    We see that $x = p_1 p_2^2$.
+    The smallest number of this form is
+    $x = 3 \cdot 2^2 = 12$.
+  \end{enumerate}
+  Since we have covered all cases and the smallest number
+  among them was $x = 12$, we see that the smallest
+  number such that $d(x) = 6 $ is 12.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 10
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.2.5) \\[4ex]
+  Prove that $\prod_{d \mid n} d = n^{d(n)/2}$. 
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  We have two cases:
+  \begin{enumerate}
+    \item $n$ is a not a perfect square: \\
+      Clearly, if $d \mid n$ for some $d \in \mathbb{Z}^+$, then
+      $\frac{n}{d} \in \mathbb{Z}$ and 
+      $\left. \frac{n}{d} \right| n$.
+      Furthermore, $d \neq \frac{n}{d}$ because $n \neq d^2$ for any $d$.
+      For every divisor $d$ of $n$, there is another distinct divisor 
+      $\frac{n}{d}$ such that 
+      $d \cdot \frac{n}{d} = n$.
+      Since we can pair every divisor of $n$ with another divisor
+      of $n$ in this way,
+      there are $\frac{d(n)}{2}$ of these pairs.
+      We see that 
+      \begin{align*}
+        \prod_{d \mid n} d 
+        &= \prod_{\substack{d \mid n \\ d < \sqrt{n}}} d \cdot \frac{n}{d}\\
+        &= \prod_{\substack{d \mid n \\ d < \sqrt{n}}} n \\
+        &= n^{d(n)/2},
+      \end{align*}
+      so we are done.
+    \item $n$ is a perfect square: \\
+      Likewise, if $d \mid n$ for some $d \in \mathbb{Z}^+$, then
+      $\frac{n}{d} \in \mathbb{Z}$ and 
+      $\left. \frac{n}{d} \right| n$.
+      However, there is exactly one divisor such that $d = \frac{n}{d}$
+      because $n = d^2$ for some $d$.
+      For every other divisor $d$ of $n$, where $d \neq \sqrt{n}$,
+      there is another distinct divisor 
+      $\frac{n}{d}$ such that 
+      $d \cdot \frac{n}{d} = n$.
+      There are $\frac{d(n) - 1}{2}$ of these pairs.
+      We see that 
+      \begin{align*}
+        \prod_{d \mid n} d 
+        &= n^{1/2} \cdot
+           \prod_{\substack{d \mid n \\ d < \sqrt{n}}} d \cdot \frac{n}{d} \\
+        &= n^{1/2} \cdot\prod_{\substack{d \mid n \\ d < \sqrt{n}}} n \\
+        &= n^{1/2} \cdot n^{\frac{d(n) - 1}{2}} \\
+        &= n^{\frac{d(n) - 1}{2} + \frac{1}{2}}  \\
+        &= n^{d(n)/2},
+      \end{align*}
+      so we are done.
+  \end{enumerate}
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 11
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.2.6) \\[4ex]
+  Prove that $\sum_{d \mid n} d = \sum_{d \mid n} n / d$, 
+  and more generally that 
+  $\sum_{d \mid n} f(d) = \sum_{d \mid n} f(n / d)$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  Let $D_n$ denote the set of divisors of $n$.
+  We will show that the function 
+  $g: D_n \to D_n$ where
+  $g(x) = \frac{n}{x}$ is a permutation of the set $D_n$.
+  It suffices to show that $g$ is bijective.
+  We see that if $g(d_1) = g(d_2)$, then 
+  \begin{align*}
+    \frac{n}{d_1} &=  \frac{n}{d_2} \\
+    d_2 &= d_1,
+  \end{align*}
+  so $g$ is injective.
+  Next we see that if $d \in D_n$, 
+  then 
+  \begin{align*}
+    g\left( \frac{n}{d} \right) 
+    &=
+    \left( \frac{n}{\left( \frac{n}{d} \right)} \right) \\
+    &=
+      d.
+  \end{align*}
+  Clearly $\frac{n}{d} \in D_n$ because
+  $\frac{n}{d} \cdot d = n$ so 
+  $\left. \frac{n}{d} \right| n$.
+  So $g$ is surjective.
+
+  Since $g$ is injective and surjective, $g$ is bijective.
+  A bijective function whose domain and range are the same set
+  is a permutation.
+  Thus $g$ is permutation on $D_n$.
+
+  Now it should be clear that 
+  \[
+    \sum_{d \mid n} f(d) = \sum_{d \mid n} f(n / d),
+  \]
+  because we are calling $f$ on all members of the set $D_n$, 
+  and addition is commutative.
+  We see that 
+  \begin{align*}
+    \sum_{d \mid n} f(d) &= \sum_{d \mid n} f(g(d)) \\
+                         &= \sum_{d \mid n} f\left(\frac{n}{d}\right).
+  \end{align*}
+  Furthermore, when $f$ is the identity function, we get
+  \begin{align*}
+    \sum_{d \mid n} d &= \sum_{d \mid n} \frac{n}{d},
+  \end{align*}
+  completing the proof.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 12
+%\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.2.12) \\[4ex]
+  Prove that the number of divisors of $n$ is odd if and only if $n$ is
+  a perfect square. 
+  If the integer $k \geq 1$, prove that $\sigma_k(n)$ is odd
+  if and only if $n$ is a square or double a square.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  First we aim to show that $d(n)$ is odd if and only if $n$
+  is a perfect square.
+  From theorem 4.3, we see that 
+  \[
+    d(n) = \prod_{p^{\alpha} \parallel n} (\alpha + 1).
+  \]
+  If $\alpha + 1$ were even for any $\alpha$, then 
+  $d(n)$ would be even.
+  Furthermore, we see that if $\alpha$ is even for 
+  each prime $p$, that $d(n)$ will be odd.
+  Thus, $d(n)$ is odd if and only if each $\alpha$
+  is even.
+  By the fundamental theorem of arithmetic, we can factor
+  $n$ in the product of prime powers.
+  It should be clear that all the exponents will be even
+  if and only if $n$ is a perfect square.
+  Thus, $d(n)$ is odd if and only if $n$ is a perfect square.
+
+  Next we aim to show that 
+  for an integer $k \geq 1$, then $\sigma_k(n)$ is odd
+  if and only if $n$ is a square or double a square.
+  By definition, $\sigma_k(n) = \sum_{d \mid n} d^k$.
+  We see that for any $k \geq 1$ and $d \in \mathbb{Z}^+$, that
+  $d^k \equiv d \mod 2$.
+  Thus, 
+  \begin{align*}
+    \sigma_k(n) &= \sum_{d \mid n} d^k \\
+                &\equiv \sum_{d \mid n} d \mod 2\\
+                &= \sigma(n).
+  \end{align*}
+  We see that it is sufficient to show that $\sigma(n)$ is 
+  odd if and only if $n$ is a square or double a square.
+  
+  We know that $\sigma(n)$ is multiplicitive and that 
+  $\sigma(p^k) = 1 + p + p^2 + \cdots + p^k$.
+  Suppose that $n$ can be factored as $\prod p^{\alpha}$.
+  We see that 
+  \begin{align*}
+    \sigma(n) &= \sigma\left( \prod_p p^{\alpha} \right) \\
+              &= \prod_p \sigma(p^{\alpha}) \\
+              &= \prod_p \left( \sum_{i = 1}^{\alpha} p^i \right).
+  \end{align*}
+  Thus, we see that $\sigma(n)$ will be odd 
+  $\left( \sum_{i = 1}^{\alpha} p^i \right)$ is odd for each
+  prime $p$ such that $p^{\alpha} \parallel n$.
+  We have two cases:
+  \begin{enumerate}
+    \item $p = 2$: \\
+      We see that 
+      \begin{align*}
+         \sum_{i = 1}^{\alpha} 2^i 
+         &= \frac{2^{\alpha + 1} - 1}{2 - 1} \\
+         &= 2^{\alpha + 1} - 1 \\
+         &\equiv 1 \mod 2,
+      \end{align*}
+      so $\sum_{i = 1}^{\alpha} 2^i$ is always odd.
+    \item $p \neq 2$: \\
+      Since the only even prime is $2$, we see that
+      $p$ must be odd.
+      Thus, $p^k$ is odd for every $k \in \mathbb{N}$.
+      Clearly, 
+      $\sum_{i = 1}^{\alpha} p^i$ has $\alpha + 1$ terms,
+      all odd.
+      Thus, the quantity will only be odd when $\alpha$ is
+      even.
+  \end{enumerate}
+  
+  Putting this together, we see that $\sigma(n)$ is odd
+  when every odd prime $p$ such that $p \mid n$ has an 
+  even exponent in the prime factorization of $n$.
+  If the exponent of 2 in the prime factorization of $n$ is
+  even, then clearly $n$ is a perfect square.
+  Otherwise, we can factor out a 2 and write $n$ as 2 times
+  a perfect square. 
+
+  Thus, $\sigma_k(n)$ is odd if and only if $\sigma(n)$ is odd.
+  And $\sigma(n)$ is odd if and only if $n$ is a perfect square
+  or twice a perfect square, completing the proof.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 13
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.2.16) \\[4ex]
+  We say (following Euclid) that $m$ is a perfect number if 
+  $\sigma(m) = 2m$, that is, if $m$ is the sum of all its positive
+  divisors other than itself.
+  If $2^n - 1$ is a prime $p$, prove that $2^{n - 1}p$ is a perfect
+  number.
+  Use this result to find three perfect number.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  We see that 
+  \begin{align*}
+    \sigma(2^{n-1}p) &= \sigma(2^{n-1}) \sigma(p) \\
+                     &= \frac{2^{(n-1)+1} - 1}{2-1} (1 + p) \\
+                     &= (2^{n} - 1) (1 +p) \\
+                     &= p (1 +p) \\
+                     &= p \cdot 2^n \\
+                     &= 2 \cdot 2^{n-1}p.
+  \end{align*}
+  By definition $2^{n-1}p$ is a perfect number.
+
+  We see that 
+  \begin{align*}
+    3 &= 2^2 - 1 \\
+    7 &= 2^3 - 1 \\
+    31 &= 2^5 - 1.
+  \end{align*}
+  Thus, we can find three perfect numbers
+  \begin{align*}
+    3 \cdot 2^{2 - 1} &= 3 \cdot 2 = 6 \\
+    7 \cdot 2^{3 - 1} &= 7 \cdot 4 = 28 \\
+    31 \cdot 2^{5-1} &= 31 \cdot 16 = 496.
+  \end{align*}
+  So 6, 28, and 496 are three perfect numbers.
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 14
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.3.1) \\[4ex]
+  Find a positive integer $n$ such that 
+  $\mu(n) + \mu(n + 1) + \mu(n + 2) = 3$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  By definition, 
+  $\mu(n) = (-1)^{\omega(n)}$, where
+  $\omega(n)$ is the number of distinct primes dividing $n$.
+  We see that $n = 20$ has the given property.
+  Notice that $20 = 2^2 \cdot 5$,
+  that $21 = 3 \cdot 7$,
+  and that $22 = 2 \cdot 11$.
+  Thus $\omega(20) = \omega(21) = \omega(22) = (-1)^2 = 1$.
+  Thus, we see that
+  $\mu(20) + \mu(21) + \mu(22) = 3$. 
+  \qed
+\vfill
+\newpage
+
+
+
+% PROBLEM 15
+\phantom{\quad} \vfill
+\noindent
+\textbf{Problem} (4.3.5) \\[4ex]
+  Prove that for every positive integer $n$,
+  $\sum_{d \mid n} |\mu(d)| = 2^{\omega(n)}$.
+  \\[2ex]
+\emph{Solution.} \\[2ex]
+  By definition, $\mu(n) = (-1)^{\omega(n)}$, where
+  $\omega(n)$ is the number of distinct primes dividing $n$
+  if $n$ is square free and 0 otherwise.
+  We see that there are 
+  $\sum_{d \mid n} |\mu(d)|$
+  square free divisors of $n$.
+
+  Since there are $\omega(n)$ distinct primes dividing $n$,
+  there are $\binom{\omega(n)}{k}$ square free divisors of $n$ 
+  with $k$ factors.
+  Thus, there are 
+  $\sum_{k = 0}^{\omega(n)} \binom{\omega(n)}{k}$ square free divisors
+  of $n$.
+  By the binomial theorem, we see that 
+  \begin{align*}
+    \sum_{k = 0}^{\omega(n)} \binom{\omega(n)}{k} &= (1 + 1)^{\omega(n)} \\
+                                                  &= 2^{\omega(n)}
+  \end{align*}
+  square free divisors of $n$.
+  Thus, $2^{\omega(n)} = \sum_{d \mid n} |\mu(d)|$ and we are done.
+  \qed
+\vfill
+
+
+
+\end{document}

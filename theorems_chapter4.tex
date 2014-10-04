@@ -1,0 +1,152 @@
+\documentclass{amsart}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{enumerate}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{note*}{Note}
+\begin{document}
+
+\section*{Chapter 4}
+
+\begin{theorem}
+  Let $x$ and $y$ be real numbers.
+  Then
+  \begin{enumerate}[(1)]
+    \item
+    $[x] \leq x \leq [x] + 1], x-1 < [x] \leq x, 0 \leq x - [x] < 1.$
+  \item
+    $[x] = \sum_{1 \leq i \leq x} 1 \quad \text{if $x \leq 0$}$.
+  \item
+    $[x+m] = [x] + m$ if $m$ is an integer.
+  \item
+    $[x] + [y] \leq [x + y] \leq [x] + [y] + 1$.
+  \item
+  $[x] + [-x] = \begin{cases} 0 & \text{if $x$ is an integer} \\
+                              -1 & \text{otherwise} \end{cases}$
+  \item
+    $\left[ \frac{[x]}{m} \right] = \left[ \frac{x}{m} \right]$
+    if $m$ is a positive integer.
+  \item
+    $\cdots$
+  \end{enumerate}
+  $\cdots$
+\end{theorem}
+
+\begin{theorem}
+  de Policgnac's formula.
+  Let $p$ denote a prime.
+  Then the largest exponent $e$ such that $p^e \parallel n!$
+  is 
+  \[
+    e = \sum^{\infty}_{i = 1} \left[ \frac{n}{p^i} \right].
+  \]
+\end{theorem}
+
+\begin{definition*}
+  A function $f$ is arithmetic if its domain is the positive
+  integers and whose range is a subset of the complex numbers.
+  In other words, $f(n)$ is defined for all positive
+  integers $n$.
+  \emph{Arithmetic functions} are also called
+  \emph{number theoretic functions}, or
+  \emph{numerical functions.}
+\end{definition*}
+
+\begin{note*}
+  An arithmetic function does not need to be defined for 0.
+  Also, $\phi$, or Euler's function, is an arithmetic function.
+\end{note*}
+
+\begin{definition*}
+  For positive integers $n$ we make the following definitions
+  \begin{itemize}
+  \item[] $d(n)$ is the number of positive divisors of $n$.
+  \item[] $\sigma(n)$ is the sum of the positive divisors of $n$.
+  \item[] $\sigma_k(n)$ is the sum of the $k$th powers of the 
+    positive divisors of $n$.
+  \item[] $\omega(n)$ is the number of distinct primes dividing $n$.
+  \item[] $\Omega(n)$ is the number of primes dividing $n$, counting
+    multiplicity.
+  \end{itemize}
+\end{definition*}
+
+\begin{note*}
+  Prime numbers are positive by definition.  
+\end{note*}
+
+\begin{definition*}
+  If $f(n)$ is an arithmetic function \underline{not identically zero} such
+  that $f(mn) = f(m)f(n)$ for every pair of 
+  \underline{positive} integers $m,n$
+  satisfying $\gcd(m,n) = 1$, then $f(n)$ is said to be multiplicitive.
+  If $f(mn) = f(m)f(n)$ whether $m$ and $n$ are relatively prime or not,
+  then $f(n)$ is said to be totally multiplicitive or completely 
+  multiplicitive. 
+\end{definition*}
+
+\begin{note*}
+  If $f$ is a multiplicitive function, then $f(n) = f(n)f(1)$.
+  Since there is an $n$ such that $f(n) \neq 0$, we can divide
+  by $f(n)$ to reveal that $f(1) = 1$.
+  Thus, an easy way to exclude a function as multiplicitive is to 
+  find $f(1) \neq 1$.
+\end{note*}
+
+\begin{note*}
+  For a multiplicitive function $f$, we see that for 
+  $n = \prod p^{\alpha}$, we have
+  $f(n) = f\left( \prod p^{\alpha} \right) = \prod f(p^{\alpha})$.
+\end{note*}
+
+\begin{theorem}
+  Let $f(n)$ be a multiplicitive function and let 
+  $F(n) = \sum_{d \mid n} f(d)$.
+  Then $F(n)$ is multiplicitive.
+\end{theorem}
+
+\begin{theorem}
+  For every positive integer $n$, 
+  \begin{align*}
+    \sigma(n) &= \prod_{p^{\alpha} \parallel n}
+                \left( \frac{p^{\alpha + 1} - 1}{p -1} \right).
+  \end{align*}
+\end{theorem}
+
+\begin{definition*}
+  For positive integers $n$ put $\mu(n) = (-1)^{\omega(n)}$ 
+  if $n$ is square-free, and set $\mu(n) = 0$ otherwise.
+  Then $\mu(n)$ is the M\"{o}bius mu function.
+\end{definition*}
+
+\begin{theorem}
+  The function $\mu(n)$ is multiplicitive and 
+  \begin{align*}
+    \sum_{d \mid n} \mu(d) =
+    \begin{cases} 
+      1 & \text{if} \quad n = 1 \\
+      0 & \text{if} \quad n > 1.
+    \end{cases}
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}
+  M\"{o}bius inversion formula.
+  If $F(n) = \sum_{d \mid n} f(d)$ for every positive integer $n$,
+  then 
+  \[
+    f(n) = \sum_{d \mid n} \mu(d) F\left( \frac{n}{d} \right).
+  \]
+\end{theorem}
+
+\begin{theorem}
+  If $f(n) = \sum_{d \mid n} \mu(d) F\left( \frac{n}{d} \right)$ for
+  every positive integer $n$, then $F(n) = \sum_{d \mid n} f(d)$.
+\end{theorem}
+
+\end{document}
